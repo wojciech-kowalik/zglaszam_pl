@@ -1,0 +1,40 @@
+FrontendBundle_default:
+    pattern:  /
+    defaults: { _controller: FrontendBundle:Default:index } 
+FrontendBundle_homepage:
+    pattern:  /app/
+    defaults: { _controller: FrontendBundle:Default:index }  
+FrontendBundle_homepage_locale:
+    pattern:  /app/{_locale}/
+    defaults: { _controller: FrontendBundle:Default:index, _locale: pl }    
+FrontendBundle_register:
+    pattern:  /app/{_locale}/register.html
+    defaults: { _controller: UserBundle:Default:register, _locale: pl } 
+FrontendBundle_activate:
+    pattern:  /app/{_locale}/token/{token}/activate.html
+    defaults: { _controller: UserBundle:Default:activate, _locale: pl }    
+FrontendBundle_logout:
+    pattern:  /app/logout.html
+    defaults: { _controller: VisualnetUserBundle:Security:logout } 
+FrontendBundle_static:
+    pattern:  /app/{_locale}/static/{slug}.html
+    defaults: { _controller: FrontendBundle:Menu:show, _locale: pl }     
+FrontendBundle_recruitment_group:
+    pattern:  /app/{_locale}/{id}/group.html
+    defaults: { _controller: FrontendBundle:Recruitment:group, _locale: pl } 
+FrontendBundle_recruitment:
+    pattern:  /app/{_locale}/{aliasName}.html
+    defaults: { _controller: FrontendBundle:Recruitment:show, _locale: pl} 
+FrontendBundle_recruitment_date:
+    pattern:  /app/{_locale}/date/{recruitmentDateId}/{aliasName}.html
+    defaults: { _controller: FrontendBundle:Recruitment:show, _locale: pl}     
+FrontendBundle_recruitment_register:
+    pattern:  /app/{_locale}/register/recruitment.html
+    defaults: { _controller: FrontendBundle:Recruitment:register, _locale: pl }    
+    
+FrontendBundle_recruitment_register_success:
+    pattern:  /app/{_locale}/register/success/{recruitmentDateId}/recruitment.html
+    defaults: { _controller: FrontendBundle:Recruitment:success, _locale: pl }      
+    options:
+      expose: true    
+  

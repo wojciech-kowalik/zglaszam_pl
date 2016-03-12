@@ -1,0 +1,7 @@
+{
+"header": [{% for headerItem in export.headers %}"{{ headerItem }}"{% if loop.last == false %},{% endif %}{% endfor %}],
+"data": [
+{% for dataItem in export.data %}{"value":[{% for item in dataItem %}"{{ item }}"{% if loop.last == false %},{% endif %}{% endfor %}]}{% if loop.last == false %},
+{% endif %}
+{% endfor %}
+]}

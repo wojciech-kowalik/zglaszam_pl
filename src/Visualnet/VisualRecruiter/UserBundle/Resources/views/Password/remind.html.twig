@@ -1,0 +1,46 @@
+{% extends '::admin.html.twig' %}
+{% block stylesheets %}
+<style type="text/css">
+    .content {  margin-right: 10px; margin-left: 10px; }
+</style>
+{% endblock %}
+{% block body %}
+
+<div id="monit"></div>
+
+<form id="form-validate" action="{{ path('UserBundle_remind_password') }}" method="post">
+
+    <div id="login-container">
+        
+        <div class="remind-description">
+            {% trans %}Proszę wpisać e-mail podany podczas rejestracji konta. Jeżeli konto istnieje, zostanie wysłana wiadomość z hasłem.{% endtrans %}
+        </div>
+        
+        <br />
+        
+        <div class="caption">{% trans %}EMAIL{% endtrans %}:</div>
+        <input type="text" id="email" class="login validate[required, custom[email]]" value="" />
+
+        <div class="button-login-menu">
+            <span>
+                <a id="remind-password-button" href="#">
+                    {% trans %}Wyślij{% endtrans %}
+                </a>
+            </span>
+            
+        </div>     
+            
+    </div>  
+    
+        <div class="button-back-remind">
+            <span>
+                <a id="remind-password-button" href="{{ path('homepage') }}">
+                    {% trans %}Powrót{% endtrans %}
+                </a>
+            </span>
+            
+        </div>      
+
+</form>
+
+{% endblock %}

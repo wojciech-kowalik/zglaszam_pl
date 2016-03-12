@@ -1,0 +1,57 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+
+<div class="header-content">{% trans %}Role{% endtrans %}</div>
+
+<a class="button-new modal-handler" data-href="{{ path('UserBundle_role_new') }}" data-height="280" data-width="440" data-title="Rola" href="#" >
+    {% trans %}Dodaj role{% endtrans %}
+</a>
+
+<br /><br />
+
+<table id="list"></table> 
+<div id="pager"></div>
+
+<div class="header-content">{% trans %}Legenda{% endtrans %}</div>
+
+<span class="legend-elements">
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-pencil"></span> <span class="ui-button-text">Edytuj</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-close"></span> <span class="ui-button-text">Usuń</span>
+</a>
+    
+</span>    
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    var url = "{{ url('UserBundle_role_list', {'_format' : 'json' }) }}";
+    var routingNames = {edit: {name: 'UserBundle_role_edit', height: 280, width: 440}};
+    
+    var colNames = ['Id','Nazwa','Opis', 'Typ', 'Aktywny', 'Akcje'];
+    var colModels = [ 
+        {name:'id',index:'id', width: 25, search:true}, 
+        {name:'name',index:'name', search:true, sorttype:'text'},
+        {name:'description',index:'description', sortable: false, search:true},
+        {name:'type',index:'type', sortable: true, search:false},
+        {name:'isActive',index:'isActive', sortable: true, search:false, formatter: booleanFormater},
+        {name:'actions',index:'actions', sortable:false, search:false},
+    ];
+
+    jqGridInit(url, routingNames, colNames, colModels, 'id');
+
+    jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false, search:false});
+    jQuery("#list").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : true, defaultSearch:"eq"});
+
+
+</script>   
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+
+<div class="header-content-bold">{% trans %}Edytuj użytkownika{% endtrans %}</div>
+
+    {% include 'UserBundle:User:form.html.twig' %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {% include 'UserBundle:Common:userjs.html.twig' %}
+
+{% endblock %}
+

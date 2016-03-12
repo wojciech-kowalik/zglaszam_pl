@@ -1,0 +1,7 @@
+parameters:
+#    statistic.example.class: Visualnet\VisualRecruiter\StatisticsBundle\Example
+
+services:
+#    statistic.example:
+#        class: %statistics.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

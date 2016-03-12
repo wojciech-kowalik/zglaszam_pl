@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="default" namespace="Visualnet\LogBundle\Model" defaultIdMethod="native" tablePrefix="visual_">
+
+  <table name="log" phpName="Log">
+    <vendor type="mysql">
+      <parameter name="Engine" value="Archive"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>
+    <behavior name="timestampable" />
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="user_id" phpName="UserId" type="INTEGER" required="true"/>
+    <column name="type" phpName="Type" type="SMALLINT" size="2" required="true"/>
+    <column name="message"  phpName="Messsage" type="varchar" size="255" required="true"/>
+    <column name="ip"  phpName="Ip" type="varchar" size="15" required="false"/>
+    <column name="content" phpName="Content" type="LONGVARCHAR" required="false"/> 
+  </table>
+  
+</database>

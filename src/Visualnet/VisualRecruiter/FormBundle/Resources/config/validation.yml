@@ -1,0 +1,7 @@
+Visualnet\VisualRecruiter\FormBundle\Model\Form:
+  
+  properties:
+    name:
+      - NotBlank:
+          message: Pole wymagane
+      

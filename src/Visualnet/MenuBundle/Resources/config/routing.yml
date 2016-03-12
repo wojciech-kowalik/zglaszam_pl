@@ -1,0 +1,50 @@
+       
+MenuBundle_list:
+    pattern:  /admin/{_locale}/menu.{_format}
+    defaults: { _controller: MenuBundle:Default:list, _format: html, _locale: pl}     
+    requirements:
+        _format: html|json    
+    
+MenuBundle_new:
+    pattern:  /admin/{_locale}/new/menu.html
+    defaults: { _controller: MenuBundle:Default:new, _locale: pl }
+      
+MenuBundle_create:
+    pattern:  /admin/{_locale}/create/menu.html
+    defaults: { _controller: MenuBundle:Default:create, _locale: pl }      
+              
+MenuBundle_edit:
+    pattern:  /admin/{_locale}/edit/{id}/menu.html
+    defaults: { _controller: MenuBundle:Default:edit, _locale: pl }
+    requirements:
+        id:  \d+
+        _method:  GET  
+    options:
+      expose: true   
+      
+MenuBundle_update:
+    pattern:  /admin/{_locale}/update/{id}/menu.html
+    defaults: { _controller: MenuBundle:Default:update, _locale: pl }
+    requirements:
+        id:  \d+          
+      
+MenuBundle_delete:
+    pattern:  /admin/{_locale}/delete/{id}/menu.html
+    defaults: { _controller: MenuBundle:Default:delete, _locale: pl }
+    requirements:
+        id:  \d+
+        _method:  GET      
+    options:
+      expose: true
+      
+MenuBundle_order:
+    pattern:  /admin/{_locale}/order/menu.html
+    defaults: { _controller: MenuBundle:Default:order, _locale: pl }       
+    options:
+      expose: true    
+      
+MenuBundle_sort:
+    pattern:  /admin/{_locale}/sort/{direction}/{id}/menu.html
+    defaults: { _controller: MenuBundle:Default:sort, _locale: pl }        
+    options:
+      expose: true         

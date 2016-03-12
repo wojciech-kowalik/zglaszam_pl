@@ -1,0 +1,60 @@
+<img src="{{ asset('/images/logo-mail.png') }}" alt="" />
+
+<div class="info-box">
+    <div class="ui-icon ui-icon-info left"></div>&nbsp;<span class="bold"></span>
+    &nbsp;Poniżej mogą Państwo zadać pytania lub sugestie dotyczące działania systemu
+</div>
+
+<form novalidate="novalidate" action="{{ path('AdminBundle_suggest_send') }}"  method="post">
+    
+    <!--  global errors container  -->
+    <span id="global-errors" class="hidden error">example</span>  
+
+    <table id="manipulate-table">
+
+        <tbody>          
+
+            <tr>
+                <th>Zawartość</th>
+                <td colspan="2"><textarea id="content-suggest" name="content-suggest" class="suggest"></textarea></td>
+            </tr>              
+            
+            <tr>
+                <th>&nbsp</th>
+                <td colspan="2">&nbsp;</td>
+            </tr>            
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+
+                <td>&nbsp;</td>
+
+                <td colspan="2">
+
+                    <a data-width="200" data-height="100" class="button-save ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false">
+                        <span class="ui-button-icon-primary ui-icon ui-icon-circle-plus"></span>
+                        <span class="ui-button-text">
+
+                                {% trans %}Wyślij{% endtrans %}
+
+                        </span>
+                    </a> 
+
+                    <a class="button-close ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false">
+                        <span class="ui-button-icon-primary ui-icon ui-icon-close"></span>
+                        <span class="ui-button-text">
+                            {% trans %}Zamknij{% endtrans %}
+                        </span>
+                    </a>                     
+
+                </td>
+            </tr>
+        </tfoot>  
+
+    </table>
+
+</form>
+
+<script src="{{ asset('/js/modal.js') }}" type="text/javascript"></script>

@@ -1,0 +1,19 @@
+parameters:
+#    visualnet_session.example.class: Visualnet\SessionBundle\Example
+
+services:
+    menu:
+      class: Visualnet\MenuBundle\Service\Menu
+      arguments: [@session, @utils]
+      
+    twig.extension.menu:
+      class: Visualnet\MenuBundle\Extension\Menu
+      arguments: [@menu]
+      tags:
+        - { name: twig.extension } 
+        
+#    kernel.listener.menu:
+#      class: Visualnet\MenuBundle\Listener\Menu
+#      tags:
+#          - { name: kernel.listener }    
+

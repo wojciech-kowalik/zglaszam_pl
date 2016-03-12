@@ -1,0 +1,63 @@
+
+<br />
+<table id="manipulate-table" style="width: 100%; border-spacing: 20px; border-collapse: collapse;">
+    <tbody>
+        <tr>
+            <th>{% trans %}Imię{% endtrans %}:</th>
+            <td>
+                {{ recruitmentUser.getName }}    
+            </td>
+        </tr>
+
+        <tr>
+            <th>{% trans %}Nazwisko{% endtrans %}:</th>
+            <td>
+                {{ recruitmentUser.getSurname }}    
+            </td>
+        </tr>
+
+        <tr>
+            <th>{% trans %}Email{% endtrans %}:</th>
+            <td>
+                {{ recruitmentUser.getEmail }}    
+            </td>
+        </tr>    
+
+        {% for recruitmentUserData in recruitmentUsersData %}
+
+        <tr>
+            <th>{{ recruitmentUserData.getQuestion.getName }}:</th>
+            <td>
+                {{ recruitmentUserData.getValue }}  
+            </td>
+        </tr>
+
+        {% endfor %}
+
+        <tr>
+            <td colspan="2">&nbsp;</th>
+        </tr>            
+        
+    </tbody>
+    
+    
+
+    <tfoot>
+        <tr>
+
+            <td colspan="2">
+
+                <a class="button-close ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false">
+                    <span class="ui-button-icon-primary ui-icon ui-icon-close"></span>
+                    <span class="ui-button-text">
+                        {% trans %}Zamknij{% endtrans %}
+                    </span>
+                </a>                     
+
+            </td>
+        </tr>
+    </tfoot>       
+
+</table>
+
+<script src="{{ asset('/js/modal.js') }}" type="text/javascript"></script>

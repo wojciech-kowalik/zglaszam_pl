@@ -1,0 +1,8 @@
+
+
+    <a href="{{ url('FrontendBundle_homepage_locale', {'_locale' : app.session.locale }) }}">{% trans %}Strona główna{% endtrans %}</a>
+    {% for element in menu.get(true) %}
+    <a href="{% if element.url %}{{element.url}}{% else %}{{ url('FrontendBundle_static', {'slug' : element.slug, '_locale': app.session.locale }) }}{% endif %}">{{ element.getName }}</a>
+    {% endfor %}     
+    <a href="{{ url('RecruitmentBundle_list', {'_locale' : app.session.locale }) }}.html">{% trans %}Logowanie{% endtrans %}</a>
+    <a href="{{ url('FrontendBundle_register', {'_locale' : app.session.locale }) }}">{% trans %}Rejestracja{% endtrans %}</a>

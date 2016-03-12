@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" namespace="Visualnet\VisualRecruiter\FormBundle\Model" tablePrefix="visual_">
+    
+<table name="form" phpName="Form" idMethod="native">    
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>      
+    <behavior name="timestampable" />  
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="user_id" type="INTEGER" required="true" primaryKey="true" />
+    <column name="group_id" type="INTEGER" required="true" primaryKey="true" />
+    <column name="name" phpName="Name" type="VARCHAR" size="255" required="false"/>
+    <column name="is_active" phpName="IsActive" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <foreign-key foreignTable="user" name="fk_form_1">
+      <reference local="user_id" foreign="id" />
+    </foreign-key>    
+    <foreign-key foreignTable="group" name="fk_form_2">
+      <reference local="group_id" foreign="id" />
+    </foreign-key>        
+</table> 
+
+<table name="form_question" phpName="FormQuestion" idMethod="native">    
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>      
+    <behavior name="timestampable" />  
+    <behavior name="sortable">
+        <parameter name="use_scope" value="true" />
+        <parameter name="scope_column" value="form_id" />
+    </behavior>      
+    <column name="form_id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="question_id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="export_name" phpName="ExportName" type="VARCHAR" size="128" required="false"/>
+    <column name="label" phpName="Label" type="VARCHAR" size="255" required="false"/>
+    <column name="is_required" phpName="IsRequired" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <column name="is_export" phpName="IsExport" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <foreign-key foreignTable="form" name="fk_form_question_1" onDelete="cascade" onUpdate="cascade">
+      <reference local="form_id" foreign="id" />
+    </foreign-key>    
+    <foreign-key foreignTable="question" name="fk_form_question_2" onDelete="cascade" onUpdate="cascade">
+      <reference local="question_id" foreign="id" />
+    </foreign-key>    
+</table> 
+
+
+</database>  
+
+

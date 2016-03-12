@@ -1,0 +1,34 @@
+<section class="box width-login-content height-auto-content">
+
+    <header class="header-index">{% trans %}Logowanie{% endtrans %}</header>
+
+    <form class="form-login" id="form-validate" action="{{ path('VisualnetUserBundle_authentication_frontend') }}" method ="post">
+         
+    <table>
+
+        <tbody>
+        <tr>
+            <td>{% trans %}login{% endtrans %}:</td><td><input id="login" type="text" name="_username" class="validate[required]" /></td>
+        </tr>
+
+        <tr>
+            <td>{% trans %}hasło{% endtrans %}:</td><td><input id="pass" type="password" name="_password" class="validate[required]" /></td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><input id="button-login" data-title="{% trans %}Logowanie{% endtrans %}" data-width="250" data-height="100" class="button-login" type="button" value="Zaloguj"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <a href="{{ path('FrontendBundle_register') }}">Nie masz konta? zarejestruj się</a>
+            </td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+    </form>
+
+</section>

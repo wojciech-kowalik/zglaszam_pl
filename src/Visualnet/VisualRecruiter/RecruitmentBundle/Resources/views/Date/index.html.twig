@@ -1,0 +1,55 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+
+<div class="header-content">{% trans %}Terminy rejestracji{% endtrans %}</div>
+
+<a class="button-new modal-handler" data-href="{{ path('RecruitmentBundle_date_new', {'mainID': recruitmentID }) }}" data-height="370" data-width="480" data-title="Terminy" href="#" >
+    {% trans %}Dodaj termin rejestracji{% endtrans %}
+</a>
+
+<a class="button-back-to-list" href="{{ path('RecruitmentBundle_list') }}" >
+    {% trans %}Lista rejestracji{% endtrans %}
+</a> 
+
+<br /><br />
+
+<table id="list"></table> 
+<div id="pager"></div>         
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    var url = "{{ url('RecruitmentBundle_dates', {'id': recruitmentID, '_format' : 'json' }) }}";
+    var recruitmentID = "{{ recruitmentID }}";
+    var routingNames = {edit: {name: 'RecruitmentBundle_date_edit', height: 370, width: 480, mainID: recruitmentID}};
+
+    {% if is_granted("ROLE_ADMIN_GODMODE") %}
+    routingNames.del = {name: 'RecruitmentBundle_date_delete', height: 120, width: 180, mainID: recruitmentID};
+    {% endif %}    
+
+    var colNames = ['Id', 'Aktywny', 'Data rozpoczęcia zdarzenia', 'Data zakończenia zdarzenia', 'Data dodania', 'Akcje'];
+    var colModels = [ 
+        {name:'id',index:'id', width:15, search:true},
+        {name:'isActive',index:'isActive', width:10, search:false, formatter: booleanFormater}, 
+        {name:'createdAt',index:'createdAt', width:15, search:false}, 
+        {name:'eventDateFrom',index:'eventDateFrom', width:15, search:false}, 
+        {name:'eventDateTo',index:'eventDateTo', width:8, search:false}, 
+        {name:'actions',index:'actions',width:50,sortable:false, search:false},
+    ];
+
+    jqGridInit(url, routingNames, colNames, colModels, 'id');
+
+    jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false, search:false});
+    jQuery("#list").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : true, defaultSearch:"eq"});
+
+
+</script>     
+
+
+{% endblock %}
+
+

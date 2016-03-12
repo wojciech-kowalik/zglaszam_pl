@@ -1,0 +1,66 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+
+<div class="header-content">{% trans %}Pytania{% endtrans %}</div>
+
+<a class="button-new modal-handler" data-href="{{ path('QuestionBundle_new') }}" data-height="500" data-width="480" data-title="Pytanie" href="#" >
+    {% trans %}Dodaj pytanie{% endtrans %}
+</a>
+<br />
+<div class="info-box">
+    <div class="ui-icon ui-icon-info left"></div>&nbsp;<span class="bold">INFORMACJA</span>:
+    &nbsp;W każdym formularzu rejestracyjnym, dostępna jest sekcja DANE PODSTAWOWE z domyślnymi polami Imię, Nazwisko i Email
+</div>
+
+<br /><br />
+
+<table id="list" data-width="180" data-height="80" data-title="Komunikat"></table> 
+<div id="pager"></div>
+
+<div class="header-content">{% trans %}Legenda{% endtrans %}</div>
+
+<span class="legend-elements">
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-pencil"></span> <span class="ui-button-text">Edytuj</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-close"></span> <span class="ui-button-text">Usuń</span>
+</a>
+    
+</span>    
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    var url = "{{ url('QuestionBundle_list', {'_format' : 'json' }) }}",
+        routingNames = {edit: {name: 'QuestionBundle_edit', height: 570, width: 480}};
+    
+    {% if is_granted("ROLE_ADMIN_GODMODE") or is_granted("ROLE_USER_ADMINGROUP") %}
+        routingNames.del = {name: 'QuestionBundle_delete', height: 120, width: 180};
+    {% endif %}  
+  
+    var colNames = ['Id', 'Nazwa', 'Stworzone przez', 'Data utworzenia', 'Akcje'];
+    var colModels = [ 
+        {name:'id',index:'id', width: 25, search:true},
+        {name:'name',index:'name', search:true, sorttype:'text'},
+        {name:'user',index:'user', search:false, sortable:false},
+        {name:'createdAt',index:'createdAt', sortable: true, search:false},
+        {name:'actions',index:'actions', sortable:false, search:false},
+    ];
+
+    jqGridInit(url, routingNames, colNames, colModels);
+
+    jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false, search:false});
+    jQuery("#list").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : true, defaultSearch:"eq"});
+
+    jQuery("#list").setCaption('Lista pytań');
+    
+</script>    
+
+{% endblock %}

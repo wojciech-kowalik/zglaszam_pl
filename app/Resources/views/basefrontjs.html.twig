@@ -1,0 +1,18 @@
+
+<!-- Global system object -->
+<script type="text/javascript">  
+    var Visualnet = Visualnet || {};
+</script>
+
+<!-- Google CDN's jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>   
+
+<!-- Translate -->
+<script src="{{ asset('/js/languages/jquery.validationEngine-'~app.session.locale~'.js') }}" type="text/javascript" charset="utf-8"></script>
+
+<!-- Others compressed -->
+<script src="{{ asset('/js/frontend.compressed.js.php') }}" type="text/javascript" charset="utf-8"></script>
+
+<!-- Routings paths -->
+<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}" type="text/javascript" charset="utf-8"></script>

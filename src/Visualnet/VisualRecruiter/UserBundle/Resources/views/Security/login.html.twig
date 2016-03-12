@@ -1,0 +1,57 @@
+{% extends '::admin.html.twig' %}
+{% block stylesheets %}
+<style type="text/css">
+    .content {  margin-right: 10px; margin-left: 10px; }
+</style>
+{% endblock %}
+{% block javascripts %}
+<script type="text/javascript">
+    $(function () {
+        {% if error %}showError('{{ error.message }}');{% endif %}
+    });
+  
+    function showError (message) {
+        var notice = $('<div style="display: none;" class="error ui-state-error"><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 5px;"></span></div>').
+            append(message);  
+        $('#monit').prepend(notice);
+        notice.slideDown().delay(3000).slideUp();
+    }
+    function showNotice (message) {
+        var notice = $('<div style="display: none;" class="notice ui-state-highlight"><span class="ui-icon ui-icon-info" style="float: left; margin-right: 5px;"></span></div>').
+            append(message); 
+        $('#monit').prepend(notice);
+        notice.slideDown().delay(3000).slideUp();
+    }   
+    
+</script>
+{% endblock %}
+{% block body %}
+
+<div id="monit"></div>
+
+<form id="form-login" action="{{ path('VisualnetUserBundle_authentication') }}" method="post">
+    <input type="hidden" name="_target_path" value="{{ path('UserBundle_role_list') }}" />
+
+    <div id="login-container">
+        
+        <div class="caption">{% trans %}LOGIN / EMAIL{% endtrans %}:</div>
+        <input type="text" id="login" name="_username" class="login validate[required]" value="" />
+
+        <div class="caption">{% trans %}HASŁO{% endtrans %}:</div>
+        <input type="password" id="pass" name="_password" class="login validate[required]" value="" />
+
+        <div class="remind-password"><a href="{{ path('UserBundle_remind_password') }}">{% trans %}ZAPOMINAŁEM HASŁA{% endtrans %}</a></div>
+        
+        <div class="button-login-menu">
+            <span>
+                <a onclick="$('form').submit();" href="#">
+                    {% trans %}Zaloguj się{% endtrans %}
+                </a>
+            </span>
+        </div>  
+
+    </div>    
+
+</form>
+
+{% endblock %}

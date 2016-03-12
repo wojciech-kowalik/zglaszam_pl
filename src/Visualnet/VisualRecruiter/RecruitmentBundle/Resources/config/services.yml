@@ -1,0 +1,7 @@
+parameters:
+#    recruitment.example.class: Visualnet\VisualRecruiter\RecruitmentBundle\Example
+
+services:
+#    recruitment.example:
+#        class: %recruitment.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

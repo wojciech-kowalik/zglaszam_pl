@@ -1,0 +1,62 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+
+<div class="header-content">{% trans %}Użytkownicy{% endtrans %}</div>
+
+<a class="button-new modal-handler" data-href="{{ path('UserBundle_user_new') }}" data-height="320" data-width="600" data-title="Użytkownik" href="#" >
+    {% trans %}Dodaj użytkownika{% endtrans %}
+</a>
+
+<br /><br />
+
+<table id="list"></table> 
+<div id="pager"></div>
+
+<div class="header-content">{% trans %}Legenda{% endtrans %}</div>
+
+<span class="legend-elements">
+    
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-pencil"></span> <span class="ui-button-text">Edytuj</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-close"></span> <span class="ui-button-text">Usuń</span>
+</a>
+    
+</span>    
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    var url = "{{ url('UserBundle_user_list', {'_format' : 'json' }) }}";
+    var routingNames = {edit: {name: 'UserBundle_user_edit', height: 320, width: 600}}
+    
+    {% if is_granted("ROLE_ADMIN_GODMODE") %}
+        routingNames.del = {name: 'UserBundle_user_delete', height: 120, width: 180};
+    {% endif %}
+    
+    var colNames = ['Id','Login','Imię','Nazwisko', 'Email', 'Aktywny', 'Data utworzenia','Akcje'];
+    var colModels = [ 
+        {name:'id',index:'id', width: 25,  search:true}, 
+        {name:'username',index:'username', search:true, sorttype:'text'},
+        {name:'name',index:'name', search:true, sorttype:'text'},
+        {name:'surname',index:'surname', search:true, sorttype:'text'},
+        {name:'email',index:'email', search:true, sorttype:'text', formatter: emailFormater},
+        {name:'isActive',index:'isActive', sortable: true, search:false, formatter: booleanFormater},
+        {name:'createdAt',index:'createdAt', search:false},
+        {name:'actions',index:'actions',sortable:false, search:false},
+    ];
+
+    jqGridInit(url, routingNames, colNames, colModels, 'id');
+
+    jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false, search:false});
+    jQuery("#list").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : true, defaultSearch:"eq"});
+
+</script>   
+
+{% endblock %}

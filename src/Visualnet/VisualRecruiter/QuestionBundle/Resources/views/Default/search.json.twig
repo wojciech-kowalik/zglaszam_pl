@@ -1,0 +1,4 @@
+[{% for question in questions -%}
+{"id": "{{ question.id }}", "label": "{{ question.name }}", "value": "{{ question.name }}", "desc": "{{ question.label }}"}{% if loop.last == false %},{% endif %}
+{%- endfor %}
+]

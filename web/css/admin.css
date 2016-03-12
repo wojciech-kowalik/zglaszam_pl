@@ -1,0 +1,272 @@
+/* ------------------------------------------- */
+/* html5 boilerplate features */
+/* ------------------------------------------- */
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+svg:not(:root) { overflow: hidden; }
+figure { margin: 0; }
+
+html, body {  height: 100%; font-family: Tahoma; position: relative; color: #545454; margin:0px; padding:0px; font-size: 11px; }
+a { color: #c8d200; text-decoration: none;}
+.logged-text { color: #c8d200 }
+ul, li { list-style:none; padding:0px; margin: 0px; }
+
+input[type="text"],input[type="password"], input[type="file"] {width: 250px; font-size:11px; padding: 0 3px 0 3px; height:16px; font-family:Tahoma; }
+textarea { width: 250px; height: 80px; color: #303123; padding: 0 3px 0 3px; }
+input[type="file"] { height: 22px; }
+p { color: #545454; font-size: 10px; }
+img {border: 0; -ms-interpolation-mode: bicubic; }
+
+svg {text-align: left;}
+
+th{text-align: left; padding-right: 15px;}
+
+.color, td.color_link a.color { color: #0991f5; }
+.bold {font-weight:bold;}
+.center {text-align:center;}
+.pointer {cursor: pointer; }
+.required { font-size: 9px;  }
+.left {float: left;}
+.middle {vertical-align: middle;}
+.bold {font-weight: bolder;}
+.break {margin-bottom: 5px; display: block;}
+.border-icon {-webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;}
+.display-none {display: none;}
+
+.ui-jqgrid .ui-jqgrid-bdiv {
+  position: relative; 
+  margin: 0em; 
+  padding:0; 
+  overflow-x:hidden; 
+  overflow-y:auto; 
+  text-align:left;
+}
+
+.icon-container { width: 270px; display:inline; float:left; }
+.icon-name { position:absolute; margin-left:20px; font-size:small; margin:1px 0px 0px 25px;}
+.ui-button-text {color: #545454;}
+
+@font-face {
+    
+    font-family: 'MyriadProRegular'; 
+    src: url('../fonts/myriadpro_regular.svg#font') format('svg'), 
+         url('../fonts/myriadpro_regular.eot'),
+         url('../fonts/myriadpro_regular.ttf') format('truetype'); 
+    font-weight:normal;
+    font-style:normal;
+    font-variant:normal;
+}
+
+@font-face {
+    font-family: 'MyriadProBold'; 
+    src: url('../fonts/myriadpro_bold.svg#font') format('svg'), 
+         url('../fonts/myriadpro_bold.eot'),
+         url('../fonts/myriadpro_bold.ttf') format('truetype'); 
+    font-weight:bold;
+    font-style:normal;
+    font-variant:normal;  
+}
+
+.option-element {font-size: 13px; margin-top: 3px; }
+
+#floating-box {z-index: 1; position: fixed; top: 52px; border: none; right: 0px; width: 220px; }
+#floating-box p {font-family: Tahoma; font-size: 11px; z-index: 1; background-color:#303123; border:3px solid #c8d200; padding: 8px; color: #eeeeee; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;}
+#floating-box .header-choose{padding-left: 26px; color: #c8d200; width: 150px; display: block; margin-bottom: -15px;}
+
+.info-box{display: inline-block; background-color: #f3f3f3; padding:5px; margin: 4px 0px 0px 0px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
+
+.nojs-dialog-background { position: fixed; left: 0pt; top: 0pt; width: 100%; height: 100%; background-color: #ffffff; background-image: none; background-repeat: repeat; background-attachment: scroll; background-position: 0% 0%; filter:alpha(opacity=60); -moz-opacity:.60; opacity:.60; }
+.nojs-dialog-root { position: fixed; width: 100%; height: 100%; top: 0; left: 0;}
+.nojs-dialog { margin: 0 auto 0 auto; padding: 5px; border: 3px solid #303123; background-color: #f3f3f3; width: 310px; margin-top: 300px;}
+.nojs-dialog p {font-family: Tahoma; font-size: 12px; text-align:center;}
+
+/* ------------------------------------------- */
+/* top */
+/* ------------------------------------------- */
+
+.bar-top {background-color: #303123; border-bottom: solid 3px #c8d200; height:60px;}
+.top-logo {float: left; margin: 2px 0 0 20px;}
+.nav-top {padding:8px 7px 0 0;}
+.nav-top a { color: #eeeeee; }
+.nav-top a:hover {color:#ccc; text-decoration:none;}
+.nav-top div { border-left: dotted 1px #c8d200; float: right; height:14px; margin: 4px 0 0 0; padding:0 7px 0 7px; }
+.nav-top img { margin-left: 3px; height:14px; vertical-align:top; }
+.nav-top .top-countdown {position: absolute; top: 26px; right: 15px; border: none; color: #ffffff; }
+.nav-top .selected-language {color: #c8d200}
+.header-top{float: left; background:url("../images/logo.png") no-repeat center; width: 231px; height: 66px;}
+
+.logout-description {color: #c8d200;}
+
+/* ------------------------------------------- */
+/* navigation left */
+/* ------------------------------------------- */
+
+.left-menu { width: 230px; position: absolute; display: block; left: 0px; background-color: #f3f3f3;}
+ul.left-menu {list-style: none;padding: 0px;margin: 20px 0 0 0;border-top: 1px solid #c1c1c1; position: relative;}
+ul.left-menu li ul.left-submenu li {list-style:none;padding:0px;margin: 0px;}
+ul.left-menu li div   {background: #303123; padding: 5px 4px 6px 20px;color: #fff;font-size: 11px;font-weight: bold;}
+ul.left-menu li ul.left-submenu div.element-container {display: block; background: none; padding: 0px; border-bottom: 1px solid #c1c1c1; color: #545454;font-size: 11px;font-weight: normal;}
+ul.left-menu li ul.left-submenu div.element-container a.element {outline: none; display: block; padding: 5px 0 5px 20px; margin: 0px; text-decoration: none; border-bottom: 0px; color: #545454;font-size: 11px;font-weight: normal; }
+ul.left-menu li ul.left-submenu li.group-element-container:hover {background: #c8d200;}
+
+ul.left-menu li ul.left-submenu div.element-container a.element div{display: inline; background-color: #f3f3f3;}
+ul.left-menu li ul.left-submenu div.element-container a.element div a{text-decoration: none;}
+
+.restricted-area {display: none;}
+.restricted-area div a{cursor: not-allowed;background: #ffffff;}
+ul.left-menu li.restricted-area ul li:hover {background: #ffffff;}
+ul.left-menu li.restricted-area ul li div a{cursor: not-allowed;}
+
+.no-active {opacity: 0.6; cursor: not-allowed;}
+.no-active div a{cursor: not-allowed;background: #ffffff;}
+ul.left-menu li.no-active ul li:hover {background: #ffffff;}
+ul.left-menu li.no-active ul li div a{cursor: not-allowed;}
+
+/* ------------------------------------------- */
+/* login */
+/* ------------------------------------------- */
+
+input.pass, input.login {border: 1px solid #c1c1c1;}
+#login-container{margin: 100px auto; background:url("../images/login-container.png") no-repeat center; width: 362px; height: 244px;}
+.button-login-menu{top: 35px; left: 175px; position: relative; background: url('../images/button-login.png') no-repeat center; width: 132px;height: 32px;}
+.button-login-menu span{position: relative; top: 6px; left: 40px;}
+.button-login-menu span a{color: #ffffff; font-size: 14px; font-family: Tahoma; text-decoration: none;}
+input.login{position: relative; left: 140px; top: 30px; display: block; background: none repeat scroll 0 0 #FFFFFF; border-radius: 4px 4px 4px 4px; box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.1); color: #303123; font-family: Tahoma; font-size: 15px; font-weight: normal; height: 28px; margin-right: 80px; padding-left: 10px; margin: 5px 5px 15px;}
+.caption {font-family: MyriadProRegular, Tahoma; font-size: 13px; position: relative; left: 145px; top: 25px; width: 100px;}
+#login-container .remind-description {font-family: MyriadProRegular, Tahoma; font-size: 13px; position: relative; left: 145px; top: 25px; width: 210px;}
+#login-container .remind-password a{ text-decoration: underline;  position: relative; top: 60px; left: 20px; font-family: MyriadProRegular, Tahoma; font-size: 13px; color: #545454;}
+
+/* ------------------------------------------- */
+/* remind password */
+/* ------------------------------------------- */
+
+.button-back-remind{ margin: -80px auto;  background: url('../images/button-login.png') no-repeat center; width: 132px;height: 32px;}
+.button-back-remind span{position: relative; top: 6px; left: 40px;}
+.button-back-remind span a{color: #ffffff; font-size: 14px; font-family: Tahoma; text-decoration: none;}
+
+/* ------------------------------------------- */
+/* content */
+/* ------------------------------------------- */
+
+.bar{width: 292px; height: 34px; }
+.bar span{position: relative; top: 8px;font-family: Tahoma; font-size: 14px; color: #303123; }
+
+#global-errors {text-align: center; margin: 1px; display: block;}
+
+#loader {display: none; position: absolute;  z-index: 10000;}
+.loader-root { position: fixed; width: 100%; height: 100%; top: 48%; left: 0; overflow: hidden;}
+.loader-dialog {font-family: Tahoma; font-size: 11px; color: #303123; margin: 0 auto 0 auto; padding: 5px; border: 2px solid #303123; background-color: #ffffff; width: 300px;}
+
+#container { background-color: #ffffff;}
+.header-content-bold {border-bottom: 1px solid #c1c1c1;margin-top: 9px;margin-bottom:30px;padding-bottom:2px;font-size:15px; font-weight: bold;}
+.header-content {border-bottom: 1px solid #c1c1c1;margin-top: 9px;margin-bottom:15px;padding-bottom:2px;font-size:15px;}
+.content { margin-right: 10px; margin-left: 230px;  min-height:500px;  padding:15px; border: 1px solid #d2d2d2; background: #ffffff; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;}
+.group-role-content {overflow-y: scroll;  height: 100px; width: 200px;}
+
+#list{border-collapse: separate;}
+
+input.login {width: 150px;}
+
+.grid-delete {cursor: pointer; margin: 5px; padding: 5px; border-left: dotted 1px #303123; padding: 5px;}
+.grid-drag {cursor: move;}
+.ui-datepicker-trigger {vertical-align: middle; cursor: pointer;}
+input.datepicker{width: 100px;}
+input.datetimepicker{width: 100px;}
+
+.hr {margin: 10px 0 0 0; font-size: 0px;overflow: hidden;height: 0px;clear: both;border-top: 1px solid #B2B2B2;}
+a {text-decoration: none;}
+a:hover {text-decoration: underline;}
+textarea {font-family: Arial;font-size: 10pt;overflow: auto;}
+textarea.suggest {font-family: Arial;font-size: 10pt;overflow: auto; height: 200px; width: 330px;}
+img {display: inline;border: 0px;}
+table {border-width: 0px;border-collapse: collapse;}
+
+.error {color: red; border: 1px solid red;}
+.red{color: red;}
+.success{color: green; border: 1px solid green;}
+
+.question-blind{opacity: 0.5}
+.question-label {opacity: 0.5; font-size: 10px;}
+
+#accordion{width: 300px; margin: 50px auto 0 auto; overflow: hidden;}
+#accordion #data{overflow: hidden;}
+#accordion .login-header{font-weight: bold;}
+
+.manipulate-table {width: 100%; border-collapse: collapse;}
+.manipulate-table tbody tr th{text-align: left; width: 100%; font-weight: bold; font-size: 12px;}
+.manipulate-table td input.flat{width: 25px; display: inline;}
+.manipulate-table textarea{height: 50px;}
+.flat {width: 25px; display: inline;}
+
+h1 {font-size: 17px;}
+
+#data-table {width: 100%; border-collapse: collapse; }
+#data-table th {text-align: left; width: 140px; padding-bottom: 10px; font-size: 13px;}
+#data-table tr:hover {cursor: pointer; color: green;}
+
+input.ui-pg-input{width: 15px;}
+.inline{display: inline;}
+
+.center{margin: auto;}
+.set-inline{display:inline}
+.display-none{display: none;}
+.hidden{visibility: hidden;}
+
+.navigation {margin-top: 15px; margin-bottom: 15px;}
+
+.pagination{text-align: center; font-size: 13px;}
+
+.pagination span.current{font-weight: bold; color: green;}
+.pagination span.page a{color: #000000;}
+.pagination span.page a:link{font-weight: bold; text-decoration: none;}
+
+.pagination span.next a, span.previous a{color: #000000;}
+.pagination span.next a:link, span.previous a:link{text-decoration: none;}
+
+.pagination span.last a, span.first a{color: #000000;}
+.pagination span.last a, span.first a:link{text-decoration: none;}
+
+.sortable, .asc, .desc{text-decoration: underline; color: green;}
+.asc {background:url("../images/arrow-up.gif") top right no-repeat; text-align: left; width: 120px; display: block;}
+.desc {background:url("../images/arrow-down.gif") top right no-repeat; text-align: left; width: 120px; display: block;}
+
+#question-chooser{height: 150px; width: 290px; overflow-y: scroll; border: 1px solid #c1c1c1;  -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; font-family:Tahoma; }
+
+#chart-div {padding-left: 0px; margin-left: 0px;}
+
+/* ------------------------------------------- */
+/* legend */
+/* ------------------------------------------- */
+
+.legend-elements a {cursor: default;}
+
+/* ------------------------------------------- */
+/* question searcher */
+/* ------------------------------------------- */
+
+#question-searcher {width: 250px;}
+.ui-autocomplete-loading { background: white url('../images/ui-anim_basic_16x16.gif') right center no-repeat; }
+.ui-autocomplete li{width: 250px;}
+
+/* ------------------------------------------- */
+/* tipsy */
+/* ------------------------------------------- */
+
+.tipsy { padding: 5px; font-size: 10px;  background-repeat: no-repeat;  background: url('../images/tipsy.gif'); }
+  .tipsy-inner { padding: 5px 8px 4px 8px; background-color: #303123; color: white; max-width: 200px; text-align: center; }
+  .tipsy-inner { -moz-border-radius:3px; -webkit-border-radius:3px; }
+  .tipsy-north { background-position: top center; }
+  .tipsy-south { background-position: bottom center; }
+  .tipsy-east { background-position: right center; }
+  .tipsy-west { background-position: left center; }
+  
+/* ------------------------------------------- */
+/* footer */
+/* ------------------------------------------- */
+
+.footer { color: #c8d200; margin-top: 25px; padding: 12px; text-align: right; font-size:11px; height: 100px;  font-family: Verdana, Arial, Helvetica, sans-serif; background: none repeat scroll 0 0 #303123; border-top: 2px solid #c8d200; }
+.footer a { color: #777;}
+.footer a:hover {color:#545454;}
+.footer .vcard{float:left;}
+
+

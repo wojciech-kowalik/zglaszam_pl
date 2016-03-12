@@ -1,0 +1,69 @@
+
+                    <table id="form-questions">   
+
+                        <tr>
+                            <td colspan="3">
+                                <div class="bar"><span>{% trans %}Dane podstawowe{% endtrans %}</span></div>                   
+                            </td>
+                        </tr> 
+
+                        {% for key, defaultQuestion in defaultQuestions %} 
+                        {% include "QuestionBundle:Types:default.html.twig" with {'object': defaultQuestion, 'key': key} %}
+                        {% endfor %}     
+
+                        <tr>
+                            <td colspan="3">&nbsp;</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="3">
+                                <div class="bar"><span>{% trans %}Pytania dodatkowe{% endtrans %}</span></div>                   
+                            </td>
+                        </tr>   
+
+                        <tr>
+                            <td colspan="3">&nbsp;</td>
+                        </tr>                                
+
+                        {% for formQuestion in formQuestions %} 
+                        {% include "QuestionBundle:Types:"~formQuestion.question.type~".html.twig" with {'object': formQuestion} %}
+                        {% endfor %}
+
+
+                        <tr>
+                            <td colspan="3">&nbsp;</td>
+                        </tr>     
+
+                        <tr>
+                            <td colspan="3">&nbsp;</td>
+                        </tr>                                    
+
+                        <tr id="form-questions-actions">
+                            
+                            <td style="text-align: center;">
+
+
+                                <div class="button-register">
+                                    <span>
+                                        <a id="recruitment-register" class="button-redirect" href="javascript: void(0);">{% trans %}Zarejestruj się{% endtrans %}
+                                        </a>
+                                    </span>
+                                </div>        
+
+                            </td>
+
+                            <td style="text-align: center; vertical-align: middle;">
+
+                                <div class="button-clean">
+                                    <span>
+                                        <a onclick="$('form')[0].reset();" class="button-redirect" href="javascript: void(0);">{% trans %}Wyczyść{% endtrans %}</a>
+                                    </span>
+                                </div>   
+
+                            </td>
+
+                            <td>&nbsp;</td>
+
+                        </tr>  
+
+                    </table> 

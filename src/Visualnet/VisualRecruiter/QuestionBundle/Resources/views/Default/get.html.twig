@@ -1,0 +1,7 @@
+{% for question in questions %}
+
+{% if question.label %}<div title="{{ question.label }}" class="middle title ui-icon ui-icon-info left"></div>{% endif %}
+<input id="{{ question.id }}" type="radio" data-form-id="{{ formID }}" name="question" data-height="230" data-width="400" data-title="Pytanie" data-id="{{ question.id }}" class="question middle question-add"> {{ question.name }} <span class="question-label">({{ question.type|trans }})</span>
+<br />
+
+{% endfor %}

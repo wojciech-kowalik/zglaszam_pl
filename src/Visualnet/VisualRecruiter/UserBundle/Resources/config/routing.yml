@@ -1,0 +1,129 @@
+VisualnetUserBundle_user_list:
+    pattern:  /admin/{_locale}/user/list.html
+    defaults: { _controller: VisualnetUserBundle:Admin:index, _locale: pl }
+
+VisualnetUserBundle_login:
+    pattern:  /login.html
+    defaults: { _controller: VisualnetUserBundle:Security:login }
+VisualnetUserBundle_authentication:
+    pattern:  /admin/authentication.html
+    defaults: { _controller: VisualnetUserBundle:Security:authentication }
+VisualnetUserBundle_authentication_frontend:
+    pattern:  /app/authentication.html
+    defaults: { _controller: VisualnetUserBundle:Security:authentication }
+  
+# AdminBundle_role SECTION    
+    
+UserBundle_role_list:
+    pattern:  /admin/{_locale}/roles.{_format}
+    defaults: { _controller: UserBundle:Role:list, _format: html, _locale: pl}     
+    requirements:
+        _format: html|json
+
+UserBundle_role_new:
+    pattern:  /admin/{_locale}/new/role.html
+    defaults: { _controller: UserBundle:Role:new, _locale: pl } 
+      
+UserBundle_role_create:
+    pattern:  /admin/{_locale}/create/role.html
+    defaults: { _controller: UserBundle:Role:create, _locale: pl }   
+      
+UserBundle_role_edit:
+    pattern:  /admin/{_locale}/edit/{id}/role.html
+    defaults: { _controller: UserBundle:Role:edit, id: 0, _locale: pl }  
+    options:
+      expose: true
+      
+UserBundle_role_update:
+    pattern:  /admin/{_locale}/update/{id}/role.html
+    defaults: { _controller: UserBundle:Role:update, id: 0, _locale: pl }  
+      
+UserBundle_role_delete:
+    pattern:  /admin/{_locale}/delete/{id}/role.html
+    defaults: { _controller: UserBundle:Role:delete, _locale: pl }    
+    options:
+      expose: true   
+      
+# / AdminBundle_role SECTION  
+
+# AdminBundle_group SECTION    
+    
+UserBundle_group_list:
+    pattern:  /admin/{_locale}/groups.{_format}
+    defaults: { _controller: UserBundle:Group:list, _format: html, _locale: pl}     
+    requirements:
+        _format: html|json
+        
+UserBundle_group_new:
+    pattern:  /admin/{_locale}/new/group.html
+    defaults: { _controller: UserBundle:Group:new, _locale: pl }   
+    
+UserBundle_group_create:
+    pattern:  /admin/{_locale}/create/group.html
+    defaults: { _controller: UserBundle:Group:create, _locale: pl }    
+    
+UserBundle_group_edit:
+    pattern:  /admin/{_locale}/edit/{id}/group.html
+    defaults: { _controller: UserBundle:Group:edit, id: 0, _locale: pl }  
+    options:
+      expose: true      
+    
+UserBundle_group_update:
+    pattern:  /admin/{_locale}/update/{id}/group.html
+    defaults: { _controller: UserBundle:Group:update, id: 0, _locale: pl }    
+    
+UserBundle_group_delete:
+    pattern:  /admin/{_locale}/delete/{id}/group.html
+    defaults: { _controller: UserBundle:Group:delete, _locale: pl }  
+    options:
+      expose: true      
+         
+# / AdminBundle_role SECTION  
+
+# UserBundle_user SECTION    
+
+UserBundle_user_list:
+    pattern:  /admin/{_locale}/users.{_format}
+    defaults: { _controller: UserBundle:Default:list, _format: html, _locale: pl}     
+    requirements:
+        _format: html|json
+    
+UserBundle_user_new:
+    pattern:  /admin/{_locale}/new/user.html
+    defaults: { _controller: UserBundle:Default:new, _locale: pl }     
+    
+UserBundle_user_create:
+    pattern:  /admin/{_locale}/create/user.html
+    defaults: { _controller: UserBundle:Default:create, _locale: pl }    
+        
+UserBundle_user_edit:
+    pattern:  /admin/{_locale}/edit/{id}/user.html
+    defaults: { _controller: UserBundle:Default:edit, id: 0, _locale: pl  }
+    options:
+      expose: true 
+    
+UserBundle_user_update:
+    pattern:  /admin/{_locale}/update/{id}/user.html
+    defaults: { _controller: UserBundle:Default:update, id: 0, _locale: pl  }   
+    
+UserBundle_user_delete:
+    pattern:  /admin/{_locale}/delete/{id}/user.html
+    defaults: { _controller: UserBundle:Default:delete, _locale: pl }  
+    options:
+      expose: true     
+    
+# / UserBundle_user SECTION   
+
+UserBundle_generate_login:
+    pattern:  /admin/{_locale}/generate/login/user.json
+    defaults: { _controller: UserBundle:Default:generateLogin, _locale: pl }  
+    options:
+      expose: true   
+      
+UserBundle_change_password:
+    pattern:  /admin/{_locale}/change/password/{id}/user.html
+    defaults: { _controller: UserBundle:Default:changePassword, _locale: pl }   
+    
+UserBundle_remind_password:
+    pattern:  /admin/remind/password.html
+    defaults: { _controller: UserBundle:Default:remindPassword, _locale: pl }     

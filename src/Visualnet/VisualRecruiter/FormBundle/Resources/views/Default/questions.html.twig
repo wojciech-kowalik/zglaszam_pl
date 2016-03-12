@@ -1,0 +1,118 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+
+<div class="header-content">{% trans %}Pytania{% endtrans %}</div>
+
+<a class="button-back-to-list" href="{{ path('FormBundle_list') }}.html" >
+    {% trans %}Lista formularzy{% endtrans %}
+</a> 
+
+<br /><br />
+
+<table id="manipulate-table">  
+    <tbody>
+
+        <tr>
+            <th><label class="required">{% trans %}Wyszukaj{% endtrans %}:</label></th>
+            <td>
+                <input type="text" id="question-searcher" data-url="{{ path('QuestionBundle_search') }}">
+                    <a data-form-id="{{ formID }}" data-height="230" data-width="400" data-title="Pytanie" id="button-add-searched" style="vertical-align: middle;" data-title="Komunikat" class="question-add">
+                        {% trans %}Wybierz pytanie{% endtrans %}
+                    </a> 
+
+
+            </td>
+
+            <td>&nbsp;</td>
+        </tr>   
+
+        <tr>
+            <th><label class="required">{% trans %}Wybierz{% endtrans %}:</label></th>
+            <td>
+
+                <div id="question-chooser">
+
+                    {% render "QuestionBundle:Default:get" with {'formID': formID} %}
+
+                </div>
+
+            </td>
+
+            <td>&nbsp;</td>
+        </tr>   
+
+        <tr>
+            <td colspan="3">&nbsp;</td>
+        </tr>                
+
+</table>
+
+<br /><br />
+
+<table id="list"></table> 
+<div id="pager"></div>         
+
+<div class="header-content">{% trans %}Legenda{% endtrans %}</div>
+
+<span class="legend-elements">
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+    <span class="ui-button-icon-primary ui-icon ui-icon-pencil"></span> <span class="ui-button-text">Edytuj</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+    <span class="ui-button-icon-primary ui-icon ui-icon-close"></span> <span class="ui-button-text">Usuń</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+    <span class="ui-button-icon-primary ui-icon ui-icon-triangle-1-n"></span> <span class="ui-button-text">Przesunięcie elementu w górę</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+    <span class="ui-button-icon-primary ui-icon ui-icon-triangle-1-s"></span> <span class="ui-button-text">Przesunięcie elementu w dół</span>
+</a>
+    
+</span>   
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="{{ asset('/js/form.js') }}" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    var url = "{{ url('FormBundle_questions', {'id': formID, '_format' : 'json' }) }}";
+    var formID = "{{ formID }}";
+    var routingNames = {
+        edit: {name: 'FormBundle_question_edit', height: 230, width: 400, mainID: formID},
+        sort: {name: 'FormBundle_question_sort', height: 120, width: 180, mainID: formID}
+    };
+
+    {% if is_granted("ROLE_ADMIN_GODMODE") %}
+    routingNames.del = {name: 'FormBundle_question_delete', height: 120, width: 180, mainID: formID};
+    {% endif %}    
+
+    var colNames = ['Id', 'Nazwa', 'Wymagane', 'Export', 'Data dodania', 'Akcje'];
+    var colModels = [ 
+        {name:'id',index:'id', width:15, search:true}, 
+        {name:'name',index:'name', width:40, search:true}, 
+        {name:'isRequired',index:'isRequired',width:10, search:false, formatter: booleanFormater}, 
+        {name:'isExport',index:'isExport', width:10, search:false, formatter: booleanFormater}, 
+        {name:'createdAt',index:'createdAt', width:10, search:false}, 
+        {name:'actions',index:'actions',width:50,sortable:false, search:false},
+    ];
+
+    jqGridInit(url, routingNames, colNames, colModels, 'questionId');
+
+    jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false, search:false});
+    jQuery("#list").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : true, defaultSearch:"eq"});
+
+
+</script>     
+
+
+{% endblock %}
+
+

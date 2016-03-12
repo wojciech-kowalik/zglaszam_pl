@@ -1,0 +1,7 @@
+parameters:
+#    question.example.class: Visualnet\VisualRecruiter\QuestionBundle\Example
+
+services:
+#    question.example:
+#        class: %question.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

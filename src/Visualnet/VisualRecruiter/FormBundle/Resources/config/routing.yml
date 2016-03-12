@@ -1,0 +1,93 @@
+       
+FormBundle_list:
+    pattern:  /admin/{_locale}/forms.{_format}
+    defaults: { _controller: FormBundle:Default:list, _format: html, _locale: pl}     
+    requirements:
+        _format: html|json    
+    
+FormBundle_new:
+    pattern:  /admin/{_locale}/new/form.html
+    defaults: { _controller: FormBundle:Default:new, _locale: pl }
+      
+FormBundle_create:
+    pattern:  /admin/{_locale}/create/form.html
+    defaults: { _controller: FormBundle:Default:create, _locale: pl }      
+              
+FormBundle_edit:
+    pattern:  /admin/{_locale}/edit/{id}/form.html
+    defaults: { _controller: FormBundle:Default:edit, _locale: pl }
+    requirements:
+        id:  \d+
+    options:
+      expose: true   
+      
+FormBundle_update:
+    pattern:  /admin/{_locale}/update/{id}/form.html
+    defaults: { _controller: FormBundle:Default:update, _locale: pl }
+    requirements:
+        id:  \d+         
+    options:
+      expose: true   
+      
+FormBundle_delete:
+    pattern:  /admin/{_locale}/delete/{id}/form.html
+    defaults: { _controller: FormBundle:Default:delete, _locale: pl }
+    requirements:
+        id:  \d+
+        _method:  GET      
+    options:
+      expose: true
+      
+FormBundle_questions:
+    pattern:  /admin/{_locale}/questions/{id}/form.{_format}
+    defaults: { _controller: FormBundle:FormQuestion:list, _format: html, _locale: pl }  
+    requirements:
+        id:  \d+ 
+    options:
+      expose: true
+      
+FormBundle_preview:
+    pattern:  /admin/{_locale}/preview/{id}/form.{_format}
+    defaults: { _controller: FormBundle:Default:preview, _format: html, _locale: pl }  
+    requirements:
+        id:  \d+ 
+    options:
+      expose: true      
+      
+FormBundle_question_new:
+    pattern:  /admin/{_locale}/new/{id}/question/{mainID}/form.html
+    defaults: { _controller: FormBundle:FormQuestion:new, _locale: pl }      
+    options:
+      expose: true
+      
+FormBundle_question_create:
+    pattern:  /admin/{_locale}/create/question/form.html
+    defaults: { _controller: FormBundle:FormQuestion:create, _locale: pl }      
+
+FormBundle_question_edit:
+    pattern:  /admin/{_locale}/edit/{id}/question/{mainID}/form.html
+    defaults: { _controller: FormBundle:FormQuestion:edit, _locale: pl }      
+    options:
+      expose: true   
+      
+FormBundle_question_update:
+    pattern:  /admin/{_locale}/update/{id}/question/{mainID}/form.html
+    defaults: { _controller: FormBundle:FormQuestion:update, _locale: pl }      
+      
+FormBundle_question_delete:
+    pattern:  /admin/{_locale}/delete/{id}/question/{mainID}/form.html
+    defaults: { _controller: FormBundle:FormQuestion:delete, _locale: pl }        
+    options:
+      expose: true  
+      
+FormBundle_question_check:
+    pattern:  /admin/{_locale}/check/{id}/question/{mainID}/form.html
+    defaults: { _controller: FormBundle:FormQuestion:exists, _locale: pl }        
+    options:
+      expose: true  
+      
+FormBundle_question_sort:
+    pattern:  /admin/{_locale}/sort/{direction}/{id}/question/{mainID}/form.html
+    defaults: { _controller: FormBundle:FormQuestion:sort, _locale: pl }        
+    options:
+      expose: true        

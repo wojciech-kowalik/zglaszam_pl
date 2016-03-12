@@ -1,0 +1,68 @@
+{% extends "::template.html.twig" %}
+
+{% block top %}
+
+    <div class="header-top-content">Grupa</div>
+    <div class="top-content">{{ groupName }}</div>
+
+{% endblock %}
+
+{% block body %}
+
+<aside  class="column-left">    
+    
+<h3>
+    <div class="content-header">Rejestracje</div><br />
+</h3>    
+    
+{% for recruitment in recruitments %}
+
+    <h1 style="width: 300px;">{{ recruitment.Name}}</h1>
+
+    <div class="bar"><span>{% trans %}Terminy{% endtrans %}:</span></div>  
+    <br />
+    
+{% if recruitment.RecruitmentDates %}
+
+    {% for recruitmentDate in recruitment.RecruitmentDates %}
+              
+        {% if recruitmentDate.isActive %}
+            <a href={{ path('FrontendBundle_recruitment_date', {'recruitmentDateId': recruitmentDate.Id,'aliasName': recruitment.AliasName }) }}>
+                {% if recruitmentDate.isNotSetEventDate %}
+                    {% trans %}Termin zostanie podany wkrótce{% endtrans %}
+                {% else %}   
+                    {{ recruitmentDate.eventDateFrom|date("d/m/Y") }} - {{ recruitmentDate.eventDateTo|date("d/m/Y") }}
+                {% endif %}
+            </a>         
+        {% else %}
+        
+            {% if recruitmentDate.isNotSetEventDate %}
+                {% trans %}Termin nieokreślony{% endtrans %}
+            {% else %}   
+                {{ recruitmentDate.eventDateFrom|date("d/m/Y") }} - {{ recruitmentDate.eventDateTo|date("d/m/Y") }}
+            {% endif %}
+            
+            {% if recruitmentDate.noActiveText %}
+            ({{ recruitmentDate.noActiveText }})
+            {% else %}
+            ({% trans %}Termin nieaktywny{% endtrans %})
+            {% endif %}
+        {% endif %}
+          
+        <br />
+    
+    {% endfor %}
+    
+    <br />
+    
+{% endif %}
+    
+{% endfor %}    
+    
+</aside>    
+
+<aside class="column-right">
+    <img src="{{ asset('images/recruitment-abstract.png') }}" alt="" />    
+</aside>
+
+{% endblock %}

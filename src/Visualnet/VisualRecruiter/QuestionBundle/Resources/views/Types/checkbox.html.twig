@@ -1,0 +1,37 @@
+<tr>
+    
+    <th>
+        <div style="float: left;">
+            {{ object.question.name }}: {% if object.isRequired %}*{% endif %}
+        </div>
+        
+        {% if object.question.label %}
+        
+        <div style="float: right;">
+            <span title="{{ object.question.label }}" class="middle title ui-icon ui-icon-info left"></span>
+        </div>
+        
+        {% endif %}
+        
+    </th>
+    <td>
+        {% if object.question.answersArray %}
+        
+            {% for answer in object.question.answersArray %}
+                <input id="data-{{ object.question.id }}-{{ loop.index0 }}" name="data[{{ object.question.id }}][]" value="{{ answer }}" type="checkbox"> {{ answer }}
+                             <br />
+            {% endfor %} 
+        {% else %}
+        
+            <input id="data-{{ object.question.id }}" name="data[{{ object.question.id }}]" value="1" type="checkbox">
+            
+        {% endif %}
+        
+        <div id="error-data-{{ object.question.id }}">&nbsp;</div>
+        <input type="hidden" name="hidden-data[{{ object.question.id }}]" value="{{ object.question.data }}" />
+            
+    </td>
+
+    
+</tr>
+

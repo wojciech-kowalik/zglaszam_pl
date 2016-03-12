@@ -1,0 +1,305 @@
+@charset "utf-8";
+
+/* ------------------------------------------- */
+/* html5 elements */
+/* ------------------------------------------- */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+
+::-webkit-input-placeholder {color: #C1C1BF;}
+:-moz-placeholder {color: #C1C1BF;}
+:-ms-input-placeholder{color: #C1C1BF;}
+
+input[type=text]:focus:valid,
+input[type=email]:focus:valid,
+input[type=number]:focus:in-range {border: 1px solid #058934; }
+
+input[type=text]:focus:invalid,
+input[type=email]:focus:invalid,
+input[type=number]:focus:out-of-range {border: 1px solid #f00; }
+
+/* ------------------------------------------- */
+/* html5 boilerplate features */
+/* ------------------------------------------- */
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+svg:not(:root) { overflow: hidden; }
+figure { margin: 0; }
+
+/* ------------------------------------------- */
+/* atomic elements */
+/* ------------------------------------------- */
+
+* {margin: 0px; padding: 0px; font:12px "Trebuchet MS", Tahoma, sans-serif; font-size: 12px; color:#6F695D;}
+
+@font-face {
+    
+    font-family: 'MyriadProRegular'; 
+    src: 
+         url('../fonts/myriadpro_regular.eot'),
+         url('../fonts/myriadpro_regular.ttf') format('truetype'); 
+    font-weight:normal;
+    font-style:normal;
+    font-variant:normal;
+}
+
+@font-face {
+    font-family: 'MyriadProBold'; 
+    src: 
+         url('../fonts/myriadpro_bold.eot'),
+         url('../fonts/myriadpro_bold.ttf') format('truetype'); 
+    font-weight:bold;
+    font-style:normal;
+    font-variant:normal;  
+}
+
+html,body{background:url(../images/background.png) top center repeat-x; height: 100%; background-color: #f5f5ff;}
+
+a{text-decoration:none; color: #89cc00;}
+a:hover{ text-decoration:underline;}
+
+div.static-content{font-family: Tahoma; padding: 10px;}
+img {border: 0; -ms-interpolation-mode: bicubic; }
+input{ border: 1px solid #b5b3b3;}
+textarea {width: 280px; height: 150px; border: 1px solid #b5b3b3;}
+select{width: 250px; border: 1px solid #b5b3b3;}
+.recruitment-register-input {width: 250px;}
+
+h1{font-family: MyriadProBold, Tahoma; margin:0px; padding:0px; font-weight:bold; font-size:18px; }
+.content-header{width: 100%; font-family: Tahoma; color:#89cc00; margin: 15px; padding:0px; font-weight:bold; font-size:24px; font-weight: normal; color: #134f5f;}
+
+article{text-align: justify; overflow: hidden;}
+table th{text-align: left;}
+table tr{border-collapse: separate; padding: 5px;}
+
+/* ------------------------------------------- */
+/* helpers */
+/* ------------------------------------------- */
+
+.set-inline{display:inline}
+.display-none{display: none;}
+.hidden{visibility: hidden; display: none;}
+.clear{clear: both;}
+.center{text-align: center;}
+.left{float: left;}
+.bold{font-weight: bolder;}
+.bold-font{font-family: MyriadProBold; font-size: 15px; color: #ffffff;}
+
+/* ------------------------------------------- */
+/* others elements */
+/* ------------------------------------------- */
+
+.ui-widget .monit-content {font-family: Tahoma; padding: 8px; margin: 15px; border: 1px solid #1a1a1a;}
+.ui-widget .monit-icon {float: left; margin-right: .3em;}
+.ui-widget .monit-text {color: #ffffff; font-family: Tahoma;}
+.ui-widget .monit-content .error{color: #cd0a0a;}
+
+.error-list{color: #C0402A;}
+.captcha{margin-bottom: 7px;}
+.error {}
+
+#register{width: 100%;}
+.data-the-same-row {position: relative; left: 100px;}
+
+#loader {display: none; position: absolute;  z-index: 10000; }
+.loader-root { position: fixed; width: 100%; height: 100%; top: 0; left: 0; }
+.loader-dialog {font-family: Tahoma; font-size: 11px; color: #1a1a1a; margin: 0 auto 0 auto; padding: 5px; border: 2px solid #1a1a1a; background-color: #ffffff; width: 400px; margin-top: 320px;}
+
+.register-table{border-collapse: separate; border-spacing: 12px; width: 100%;}
+.register-table ul{list-style-type: none;}
+.register-table li{color: #C0402A;}
+.register-table tr{width: 350px;}
+.register-table th label{font-family: MyriadProBold, Tahoma; font-size: 12px;}
+.register-table td input{width: 320px;}
+.register-table td input.street{width: 200px; display: inline;}
+.register-table td input.flat{width: 35px; display: inline;}
+
+.hyphenation{-webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
+
+.column-left{float:left; width: 50%;}
+.column-right{float:right; width: 50%; text-align: left; }
+.right-content {padding-left: 50px;}
+.right-content span.tip{color: #303123; font-family: MyriadProRegular, Tahoma; font-size: 15px; margin: 20px; display: block; width: 400px;}
+.right-content img{padding-right: 10px;}
+
+#register-ballon{position: relative; top: 0px; left: 50px; background: url(../images/register-ballon.png) no-repeat center; width: 219px; height: 100px;}
+#register-ballon .ballon-content{font-family: MyriadProBold, Tahoma; position: relative; top: 45px; left: 58px; font-size: 18px; color: #ffffff;}
+
+#main-container{min-height: 80%; height: auto !important; height: 80%; margin: 0 auto;}
+
+.wrapper {width: 960px; margin: 0 auto; position: relative;}
+.line {height: 1px; border-width: 0; margin: 0 auto; background-color: #e6e0e0; width: 50%; clear:both;}
+
+.box {background: rgba(0, 0, 0, 0.08); border-radius: 10px; -ms-border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; -khtml-border-radius: 10px; display: inline-block; margin: 5px; padding: 8px; height: 100px; float: left;}
+.box header{font-weight: bold; font-size: 16px; margin-bottom: 5px;}
+.box ul li{padding: 0px; margin: 0px; list-style: none;}
+.box span{font-style: italic; font-size: smaller;}
+
+.width-box-content{width: 300px}
+.height-box-content{height: 100px;}
+
+.width-login-content{width: 200px;}
+.height-auto-content{height: auto;}
+
+#breadcrumb {margin-top: 10px; margin-bottom: 10px;}
+#breadcrumb a{color: #616161; font-size: 11px;}
+#breadcrumb .underline{text-decoration: underline;}
+
+#form-register input[type="text"]{width: 250px;}
+
+/* ------------------------------------------- */
+/* tipsy */
+/* ------------------------------------------- */
+
+.tipsy { padding: 2px; background-repeat: no-repeat;  background: url(../images/tipsy.gif); }
+  .tipsy-inner { padding: 5px 8px 4px 8px; background-color: #1a1a1a; color: white; max-width: 200px; text-align: center; }
+  .tipsy-inner { -moz-border-radius:4px; -webkit-border-radius:4px; }
+  .tipsy-north { background-position: top center; }
+  .tipsy-south { background-position: bottom center; }
+  .tipsy-east { background-position: right center; }
+  .tipsy-west { background-position: left center; }
+
+/* ------------------------------------------- */
+/* header elements */
+/* ------------------------------------------- */
+
+#header {background: url(../images/content-top.png) no-repeat center top; text-align: left; width: 100%; height: 450px; padding-top: 10px; -ms-interpolation-mode:bicubic;}
+#header #navigation{position:absolute; right: 0px; top: 0px; padding: 0px; margin: 5px;}
+#header #navigation div.content{margin-left: 5px; margin-right: 5px; margin-top: 10px; float: left;}
+#header #navigation div.content a{ font-family: Tahoma;text-decoration: none; font-size: 14px; margin-right: 20px; padding: 10px;}
+#header #navigation div.content a:hover{font-family: Tahoma; color: #134f5f; background-color: #8ab5c0; padding-top: 35px; border-radius: 4px; -ms-border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -khtml-border-radius: 4px;}
+#header #navigation .logged {font-weight: bold; color: #fc6536;}
+#header #description-content .header{font-weight: bold; font-size: 28px; color: white; padding-bottom: 20px;}
+#header #description-content {width: 540px; position: absolute; top: 60px; color: white;}
+#header #logged-description {position:absolute; right: 0px; top: 40px; padding: 15px; margin: 5px; color: #fc6536;}
+#header #decription-ballon-thought{font-family: MyriadProBold, Tahoma; position: absolute; top: 280px; left: 65px; font-size: 18px; color: #5cc0dc;}
+
+#header #search{position:absolute; right: 0px; top: 30px;  margin: 5px; color: #fc6536;}
+#header #search input[type="text"]{border: 1px solid #b5b3b3;}
+#header #search #search-link{cursor: pointer;}
+#header .active {font-family: Tahoma; color: #134f5f; background-color: #8ab5c0; padding-top: 35px; border-radius: 4px; -ms-border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -khtml-border-radius: 4px;}
+#header .default{color: #ffffff;}
+
+#header-error {background: url(../images/content-top-error.png) no-repeat center top; text-align: left; width: 100%; height: 450px; padding-top: 10px; -ms-interpolation-mode:bicubic; }
+#header-error #description {position: relative; top: 200px;  font-size: 24px; color: #ffffff; text-align: center;}
+#header-error #description-extend {position: relative; top: 200px;  font-size: 16px; color: #ffffff; text-align: center;}
+
+.button-login-menu{top: 4px; position: relative; background: url('../images/button-login.png') no-repeat center; width: 132px; float: right; height: 32px; right: 0px;}
+.button-login-menu span{position: relative; top: 6px; left: 40px;}
+.button-login-menu span a{color: #ffffff; font-size: 14px; font-family: Tahoma; text-decoration: none;}
+
+.button-register-top {position: relative; top: 280px; left: 220px; width: 172px;}
+.button-register{background: url('../images/button-register.png') no-repeat center; width: 172px; height: 33px;}
+.button-register span{position: relative; top: 6px; left: 40px;}
+.button-register span a{color: #ffffff; font-size: 14px; font-family: Tahoma; text-decoration: none;}
+
+.button-back{position: relative; background: url('../images/button-back.png') no-repeat center; width: 172px; height: 33px; top: 235px; left: 395px;}
+.button-back span{position: relative; top: 6px; left: 40px;}
+.button-back span a{color: #ffffff; font-size: 14px; font-family: Tahoma; text-decoration: none;}
+
+.button-learn-top {position: relative; top: 247px; left: 0px; width: 172px;}
+.button-learn{background: url('../images/button-learn.png') no-repeat center; width: 172px; height: 33px;}
+.button-learn span{position: relative; top: 6px; left: 35px;}
+.button-learn span a{color: #ffffff; font-size: 14px; font-family: Tahoma; text-decoration: none;}
+
+.button-clean{background: url('../images/button-clean.png') no-repeat center; width: 172px; height: 33px;}
+.button-clean span{position: relative; top: 6px; left: 40px;}
+.button-clean span a{color: #ffffff; font-size: 14px; font-family: Tahoma; text-decoration: none;}
+
+#logo{left: 0px; position: absolute;}
+
+/* ------------------------------------------- */
+/* circles */
+/* ------------------------------------------- */
+
+#circle-1-content {position: absolute; top: 355px; width: 250px;}
+#circle-1-content #circle-1-img {position: relative; top: 5px; float: left; background: url(../images/circle-1.png) no-repeat center; width: 34px; height: 34px;}
+#circle-1-content #circle-1-description-header {position: absolute;  margin-left: 50px;  font-family: Tahoma; color: #ffffff; font-size: 16px;}
+#circle-1-content #circle-1-description {position: absolute; top: 20px; margin-left: 50px;  font-family: Tahoma; color: #ffffff; font-size: 11px; width: 250px;}
+
+#circle-2-content {position: absolute; top: 355px; left: 310px; width: 250px;}
+#circle-2-content #circle-2-img {position: relative; top: 5px; float: left; background: url(../images/circle-2.png) no-repeat center; width: 34px; height: 34px;}
+#circle-2-content #circle-2-description-header {position: absolute;  margin-left: 50px;  font-family: Tahoma; color: #ffffff; font-size: 16px;}
+#circle-2-content #circle-2-description {position: absolute; top: 20px; margin-left: 50px;  font-family: Tahoma; color: #ffffff; font-size: 11px; width: 260px;}
+
+#circle-3-content {position: absolute; top: 355px; left: 655px; width: 250px;}
+#circle-3-content #circle-3-img {position: relative; top: 5px; float: left; background: url(../images/circle-3.png) no-repeat center; width: 34px; height: 34px;}
+#circle-3-content #circle-3-description-header {position: absolute;  margin-left: 50px;  font-family: Tahoma; color: #ffffff; font-size: 16px;}
+#circle-3-content #circle-3-description {position: absolute; top: 20px; margin-left: 50px;  font-family: Tahoma; color: #ffffff; font-size: 11px; width: 250px;}
+
+/* ------------------------------------------- */
+/* form register */
+/* ------------------------------------------- */
+
+#form-validate ul li{list-style: none; font-weight: bold; padding-left: 15px; color: #cd0a0a;}
+#captcha-content img{display: block; margin-top: 10px;}
+
+/* ------------------------------------------- */
+/* form login */
+/* ------------------------------------------- */
+
+.form-login{text-align: right;}
+
+/* ------------------------------------------- */
+/* index content */
+/* ------------------------------------------- */
+
+.header-index{color: #616161; font-size: 19px; margin-top: 15px; margin-bottom: 15px;}
+
+/* ------------------------------------------- */
+/* slides */ 
+/* ------------------------------------------- */
+
+#slides{background-color: #f2f2f2; border-radius: 15px; -ms-border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; -khtml-border-radius: 15px;}
+#slides .slides-content{float: left; padding: 10px;background-color: #f2f2f2;}
+#slides .images{clear: both; padding: 10px;}
+.bar{background: url(../images/slide-bar.png) no-repeat center; width: 292px; height: 34px;}
+.bar span{position: relative; top: 8px; left: 40px; font-family: Tahoma; font-size: 14px; color: #303123; }
+#notice{clear: both; float: left;  position: relative; top: 80px; background: url(../images/notice.png) no-repeat center; width: 366px; height: 236px;}
+#cards {float: right; position: relative; top: 40px; right: 120px;}
+.card{background: url(../images/cards.png) no-repeat left; height: 65px; width: 450px; margin-bottom: 25px;}
+.card .card-header{font-family: MyriadProBold, Tahoma; color: #89cc00; position: relative; left: 70px; font-size: 15px;}
+.card .card-content{font-family: Tahoma; position: relative; left: 70px;}
+#slides #ballon{position: relative; top: -70px; left: 150px; background: url(../images/comic-ballon.png) no-repeat center; width: 219px; height: 100px;}
+#slides #ballon .ballon-content{font-family: MyriadProBold, Tahoma; position: relative; top: 30px; left: 50px; font-size: 18px; color: #ffffff;}
+
+/* ------------------------------------------- */
+/* footer */ 
+/* ------------------------------------------- */
+
+#gplus {position: relative; top: 10px; margin-bottom: 15px;}
+
+#footer{color: #ffffff; background-color: #626262; text-align: left; width: 100%; display: block; overflow: hidden; height: 270px; margin-top: 20px; padding-bottom: 15px; padding-top: 20px;}
+#footer #copyright{position: relative; top: 30px; left: 0px; color: #d6d5d5; clear: both;}
+#footer #header-section{font-family: Tahoma; color: #89cc00; margin-bottom: 10px; font-size: 14px;}
+
+#footer #element-1-content{float: left; width: 310px; }
+#footer #element-1-content .vcard div, span, abbr{color: #ffffff;}
+#footer #sitemap a{display: block; color: #ffffff; padding-bottom: 3px; }
+#footer #element-2-content{float: left;  width: 310px;}
+#footer #element-3-content{float: left; color: #ffffff; width: 310px;}
+#footer #element-3-content img{margin-right: 5px;}
+#footer #dark-bar{width: 100%; background-color: #303123; height: 110px;}
+.given-name img{border-radius: 8px; -ms-border-radius: 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px; -khtml-border-radius: 8px;}
+
+/* ------------------------------------------- */
+/* print styles */
+/* ------------------------------------------- */
+
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* h5bp.com/t */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}

@@ -1,0 +1,61 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+
+<div class="header-content">{% trans %}Grupy{% endtrans %}</div>
+
+{#
+<a class="button-new" href="{{ path('UserBundle_group_new') }}">
+    {% trans %}Dodaj grupę{% endtrans %}
+</a>
+#}
+
+<br /><br />
+
+<table id="list"></table> 
+<div id="pager"></div>
+
+<div class="header-content">{% trans %}Legenda{% endtrans %}</div>
+
+<span class="legend-elements">
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-pencil"></span> <span class="ui-button-text">Edytuj</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-close"></span> <span class="ui-button-text">Usuń</span>
+</a>
+    
+</span>   
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    var url = "{{ url('UserBundle_group_list', {'_format' : 'json' }) }}";
+    var routingNames = {edit: {name: 'UserBundle_group_edit', height: 350, width: 420}};
+    
+    {% if is_granted("ROLE_ADMIN_GODMODE") %}
+        routingNames.del = {name: 'UserBundle_group_delete', height: 120, width: 180};
+    {% endif %}    
+    
+    var colNames = ['Id','Nazwa', 'Adres grupy', 'Akcje'];
+    var colModels = [ 
+        {name:'id',index:'id', width: 25, search:true}, 
+        {name:'name',index:'name', search:true}, 
+        {name:'url',index:'url', search:false, sortable: false, formatter: urlFormater}, 
+        {name:'actions',index:'actions',sortable:false, search:false},
+    ];
+
+    jqGridInit(url, routingNames, colNames, colModels, 'id');
+
+    jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false, search:false});
+    jQuery("#list").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : true, defaultSearch:"eq"});
+
+
+</script>   
+
+{% endblock %}

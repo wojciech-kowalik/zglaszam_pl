@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="default" namespace="Visualnet\UserBundle\Model" defaultIdMethod="native" tablePrefix="visual_">
+
+  <table name="user" phpName="User">
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>
+    <behavior name="timestampable" />
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="username" phpName="Username" type="VARCHAR" size="100" required="true"/>
+    <column name="password" phpName="Password" type="VARCHAR" size="100" required="true"/>
+    <column name="salt" phpName="Salt" type="VARCHAR" size="100" required="true"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="255" required="false"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="100" required="false"/>
+    <column name="surname" phpName="Surname" type="VARCHAR" size="100" required="false"/>    
+    <column name="barcode" phpName="Barcode" type="BIGINT" required="false"/>
+    <column name="type" phpName="Type" type="ENUM" valueSet="individual, firm" required="true"/>
+    <column name="street" phpName="Street" type="VARCHAR" size="45" required="false"/>
+    <column name="flat" phpName="Flat" type="SMALLINT" size="2" required="false"/>
+    <column name="city" phpName="City" type="VARCHAR" size="45" required="false"/>
+    <column name="postcode" phpName="Postcode" type="VARCHAR" size="45" required="false"/>
+    <column name="is_superadmin" phpName="IsSuperadmin" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <column name="is_active" phpName="IsActive" type="BOOLEAN" size="1" required="true"/>
+    <column name="is_agree_processing" phpName="IsAgreeProcessing" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="is_agree_regulations" phpName="IsAgreeRegulations" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="is_first_time" phpName="IsFirstTime" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
+    <unique name="user_barcode">
+      <unique-column name="barcode" />
+    </unique>
+    <index>
+        <index-column name="is_active" />
+        <index-column name="username" />
+    </index>        
+  </table>
+  
+  <table name="group" phpName="Group" idMethod="native" isCrossRef="true">
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>
+    <behavior name="timestampable" />
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="128" required="false"/>
+    <column name="slug" phpName="Slug" type="VARCHAR" size="135" required="false"/>
+    <column name="street" phpName="Street" type="VARCHAR" size="45" required="false"/>
+    <column name="flat" phpName="Flat" type="SMALLINT" size="2" required="false"/>
+    <column name="city" phpName="City" type="VARCHAR" size="45" required="false"/>
+    <column name="postcode" phpName="Postcode" type="VARCHAR" size="45" required="false"/>
+    <column name="nip" phpName="Nip" type="CHAR" size="14" required="false"/>
+
+  </table>  
+  
+  <table name="user_group" phpName="UserGroup" isCrossRef="true">
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>
+    <column name="user_id" type="integer" required="true" primaryKey="true" />
+    <column name="group_id" type="integer" required="true" primaryKey="true" />
+    <column name="is_group_admin" type="boolean" defaultValue="false" />   
+    <foreign-key foreignTable="user" onDelete="cascade" onUpdate="cascade" name="fk_ug_1">
+      <reference local="user_id" foreign="id" />
+    </foreign-key>
+    <foreign-key foreignTable="group" onDelete="cascade" onUpdate="cascade" name="fk_ug_2">
+      <reference local="group_id" foreign="id" />
+    </foreign-key>
+  </table>    
+  
+  <table name="role" phpName="Role">
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>
+    <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+    <column name="name" type="varchar" size="100" required="true" />
+    <column name="description" type="varchar" size="255" required="true" />
+    <column name="type" phpName="Type" type="ENUM" valueSet="system, user" required="true"/>
+    <column name="is_active" type="BOOLEAN" size="1" defaultValue="false" />
+  </table>
+  
+  <table name="user_role" phpName="UserRole" isCrossRef="true">
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>
+    <column name="user_id" type="integer" required="true" primaryKey="true" />
+    <column name="role_id" type="integer" required="true" primaryKey="true" />
+    <foreign-key foreignTable="user" onDelete="cascade" onUpdate="cascade" name="fk_ur_1">
+      <reference local="user_id" foreign="id" />
+    </foreign-key>
+    <foreign-key foreignTable="role" onDelete="cascade" onUpdate="cascade" name="fk_ur_2">
+      <reference local="role_id" foreign="id" />
+    </foreign-key>
+  </table>  
+  
+  <table name="group_role" phpName="GroupRole" isCrossRef="true">
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>
+    <column name="group_id" type="integer" required="true" primaryKey="true" />
+    <column name="role_id" type="integer" required="true" primaryKey="true" />
+    <foreign-key foreignTable="group" onDelete="cascade" onUpdate="cascade" name="fk_gr_1">
+      <reference local="group_id" foreign="id" />
+    </foreign-key>
+    <foreign-key foreignTable="role" onDelete="cascade" onUpdate="cascade" name="fk_gr_2">
+      <reference local="role_id" foreign="id" />
+    </foreign-key>
+  </table>     
+
+</database>

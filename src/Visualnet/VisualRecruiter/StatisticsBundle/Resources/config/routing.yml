@@ -1,0 +1,3 @@
+StatisticsBundle_index:
+    pattern:  /admin/{_locale}/statistics.{_format}
+    defaults: { _controller: StatisticsBundle:Default:make, _format: html, _locale: pl } 

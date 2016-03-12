@@ -1,0 +1,5 @@
+<select name="recruitment_form">
+{% for form in forms %}
+<option value="{{ form.id }}" {% if form.id == formID %}selected="selected"{% endif %}>{{ form.name }}</option>
+{% endfor %}
+</select>

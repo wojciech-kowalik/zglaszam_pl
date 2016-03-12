@@ -1,0 +1,51 @@
+
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+
+<section id="register">
+
+    <aside  class="register-container column-left">    
+
+        {% include 'UserBundle:Register:form.html.twig' %}
+
+    </aside>
+
+    <aside class="column-right">
+
+        <section class="right-content">
+            <div class="content-header">Co daje nam rejestracja?</div>
+            <br />
+            <span class="tip"><img src="{{ asset('/images/check.png') }}" alt="" />dostęp do panelu administracyjnego z pełnymi prawami właściciela grupy</span>
+            <span class="tip"><img src="{{ asset('/images/check.png') }}" alt="" />możliwość zarządzania pytaniami, formularzami, rekrutacjami oraz kwalifikowaniem uczestników</span>
+            <span class="tip"><img src="{{ asset('/images/check.png') }}" alt="" />szybki export danych w dowolnie wybranym przez Państwa formacie</span>
+            <span class="tip"><img src="{{ asset('/images/check.png') }}" alt="" />dodawanie kolejnych użytkowników systemu z podziałem na określone grupy i role dostępowe</span>
+
+            <div id="register-ballon">
+                <div class="ballon-content">to gwarantujemy!</div>
+            </div>   
+
+        </section>
+
+    </aside> 
+
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% include 'UserBundle:Common:userjs.html.twig' %}
+
+<script type="text/javascript">
+    
+    $('html, body').animate({
+        scrollTop: $("#register").offset().top
+    }, 2000);    
+    
+</script>    
+
+{% endblock %}
+
+
+

@@ -1,0 +1,13 @@
+<tr>
+
+    <th>{{ object.translate }}: {% if object.required %}*{% endif %}</th>
+    <td>
+        <input class="recruitment-register-input" {% if object.extras %}{{ object.extras }}{% endif %} {% if key == "email" %}placeholder="example@example.com" type="email" {% else %}type="text"{% endif %} id="data-{{ key }}" name="data[{{ key }}]" />    
+        
+        <div id="error-data-{{ key }}">&nbsp;</div>
+        <input type="hidden" name="hidden-data[{{ key }}]" value="{{ object.data }}" />
+    </td>
+
+
+</tr> 
+

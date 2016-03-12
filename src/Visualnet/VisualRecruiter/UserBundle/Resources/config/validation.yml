@@ -1,0 +1,37 @@
+Visualnet\UserBundle\Model\User:
+  
+  properties:
+    name:
+      - NotBlank:
+          message: Pole wymagane
+    surname:
+      - NotBlank: 
+          message: Pole wymagane
+    username:
+      - NotBlank: 
+          message: Pole wymagane
+      - MinLength: 
+          limit: 5
+          message: Wymagane min 5 znaków
+    email:
+      - NotBlank: 
+          message: Pole wymagane      
+      - Email:
+          message: Email "{{ value }}" nie jest prawidłowy
+          
+  constraints:
+    - Propel\PropelBundle\Validator\Constraints\UniqueObject: username
+    - Propel\PropelBundle\Validator\Constraints\UniqueObject: email
+    
+Visualnet\UserBundle\Model\Role:
+  
+  properties:
+    name:
+      - NotBlank:
+          message: Pole wymagane
+    type:
+      - NotBlank: 
+          message: Pole wymagane
+    description:
+      - NotBlank: 
+          message: Pole wymagane          

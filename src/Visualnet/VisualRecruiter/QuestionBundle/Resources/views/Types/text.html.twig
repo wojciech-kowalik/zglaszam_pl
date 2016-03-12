@@ -1,0 +1,43 @@
+<tr>
+    
+      
+    <th>
+        <div style="float: left;">
+            {{ object.question.name }}: {% if object.isRequired %}*{% endif %}
+        </div>
+        
+        {% if object.question.label %}
+        
+        <div style="float: right;">
+            <span title="{{ object.question.label }}" class="middle title ui-icon ui-icon-info left"></span>
+        </div>
+        
+        {% endif %}
+        
+    </th>
+    <td>
+        
+        {% set placeholder = null %}
+        
+        {% if object.question.validate == "email" %}
+            {% set type = "email" %}
+            {% set placeholder = "example@example.com" %}
+        {% else %}
+            {% set type = "text" %}
+        {% endif %}
+
+        <input maxlength="{{ object.question.limit }}" {% if placeholder is not null %}placeholder="{{ placeholder }}"{% endif %} type="{{ type }}" class="recruitment-register-input" id="data-{{ object.question.id }}" name="data[{{ object.question.id }}]" />   
+        
+        {% if object.question.limit %}
+            <div>Pozostało <span id="counter-data-{{ object.question.id }}">{{ object.question.limit }}</span> znaków</div>
+        {% endif %}    
+            
+        <div id="error-data-{{ object.question.id }}">&nbsp;</div>
+        <input type="hidden" name="hidden-data[{{ object.question.id }}]" value="{{ object.question.data }}" />
+   
+        
+    </td>
+
+    
+
+</tr>

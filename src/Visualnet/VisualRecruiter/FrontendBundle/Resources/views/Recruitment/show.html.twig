@@ -1,0 +1,71 @@
+{% extends "::template.html.twig" %}
+
+{% block top %}
+
+<div class="header-top-content">Wydarzenie</div>
+<div class="top-content">{{ recruitment["Name"] }}</div>
+
+{% endblock %}
+
+{% block body %}
+
+<section id="register">
+
+    <aside  class="register-container column-left">    
+
+
+        <form id="form-register" method="POST" action="{{ path('FrontendBundle_recruitment_register') }}">
+
+            <h3>
+                <div class="content-header">Rejestracja</div>
+            </h3>
+
+            <br /><br />
+
+            <input type="hidden" name="data[recruitmentId]" value="{{ dataIds.recruitmentId }}">
+                <input type="hidden" name="data[recruitmentDateId]" value="{{ dataIds.recruitmentDateId }}">
+                    <input type="hidden" name="data[aliasName]" value="{{ recruitment['AliasName'] }}">    
+                        <input type="hidden" name="data[recruitmentName]" value="{{ recruitment['Name'] }}">          
+
+                            {% include 'FormBundle:Common:table.html.twig' %}
+
+                            <br /><br />
+                            <hr class="line">                              
+
+                                </form>                   
+
+                                <br /><br />
+
+                                </aside>
+
+                                <aside class="column-right">
+
+                                    <section class="right-content">
+
+                                        <div class="content-header">Informacje</div>
+                                        <br />
+                                        <span class="tip"><span>miejsce:</span> {{ recruitment["Place"] }}</span>
+
+                                        {% if recruitmentDate.isNotSetEventDate == false %}
+                                        <span class="tip"><span>data zdarzenia:</span> {{ recruitmentDate.eventDateFrom|date("d/m/Y") }} - {{ recruitmentDate.eventDateTo|date("d/m/Y") }}</span>
+                                        {% endif %}
+
+                                        {% if recruitmentDate.isVisibleLimit == true %}
+                                        <span class="tip"><span>ilość zarejestrowanych uczestników:</span>  {{ recruitmentDate.usedLimit }}/<span class="bold">{{ recruitmentDate.setLimit }}</span></span>
+                                        {% endif %}                                        
+
+                                    </section>
+
+                                </aside> 
+
+                                </section>
+
+                                {% endblock %}
+
+                                {% block javascripts %}
+
+                                <script src="{{ asset('/js/recruitment.js') }}" type="text/javascript"></script> 
+
+                                {% include 'FormBundle:Common:tablejs.html.twig' %}
+
+                                {% endblock %}

@@ -1,0 +1,44 @@
+imports:
+    - { resource: config.yml }
+
+#doctrine:
+#    orm:
+#        metadata_cache_driver: apc
+#        result_cache_driver: apc
+#        query_cache_driver: apc
+
+propel:
+  
+    path:       "%kernel.root_dir%/../vendor/propel"
+    phing_path: "%kernel.root_dir%/../vendor/phing"
+  
+    dbal:
+        driver:               mysql
+        user:                 zglaszam_pl
+        password:             alks6q88
+        dsn:                  mysql:host=localhost;dbname=zglaszam_pl;charset=UTF8
+        options:              {}
+        attributes:           {}
+
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: error
+            handler:      grouped
+        grouped:
+            type:    group
+            members: [streamed, buffered]
+        streamed:
+            type:  stream
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+        buffered:
+            type:    buffer
+            handler: swift
+        swift:
+            type:       swift_mailer
+            from_email: error@zglaszam.pl
+            to_email:   kontakt@wojciech-kowalik.pl
+            subject:    Wystąpił błąd w zglaszam.pl
+            level:      error

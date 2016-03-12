@@ -1,0 +1,1 @@
+apigen --source src/Visualnet/ --destination doc/ --title "zglaszam.pl" --progressbar yes

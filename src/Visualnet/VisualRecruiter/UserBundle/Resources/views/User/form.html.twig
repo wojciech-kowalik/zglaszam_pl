@@ -1,0 +1,199 @@
+<form id="form-validate" novalidate="novalidate" action="{% if object.isNew %}{{ path('UserBundle_user_create') }}{% else %}{{ url('UserBundle_user_update', {'id' : object.id }) }}{% endif %}"  method="post" {{ form_enctype(form) }}>
+
+      {% if not object.isNew %}
+      <input type="hidden" name="sf_method" value="PUT" />
+    {% endif %}
+
+    {{ form_errors(form) }}
+
+    <!--  global errors container  -->
+    <span id="global-errors" class="hidden error">example</span>  
+
+    <div class="tabs">
+        <ul>
+            <li><a href="#tabs-1">Dane podstawowe</a></li>
+            <li><a href="#tabs-2">Dane adresowe</a></li>
+            <li><a href="#tabs-3">Grupy</a></li>
+            <li><a href="#tabs-4">Indiwidualne role</a></li>
+        </ul>
+
+        <div id="tabs-1">
+
+            <table class="manipulate-table">
+
+                <tbody>
+
+                    {% if not object.isNew %}
+
+                    <tr>
+                        <th>{{ form_label(form.is_active) }}:</th>
+                        <td>
+                            {{ form_widget(form.is_active)}}
+                        </td>
+                        <td>
+                            {{ form_errors(form.is_active) }} 
+                        </td>
+                    </tr>      
+
+                    {% endif %}
+
+                    <tr>
+                        <th>{{ form_label(form.name) }}:</th>
+                        <td>
+                            {{ form_widget(form.name, { 'attr': {'class': 'validate[required]'}}) }}
+                        </td>
+                        <td>
+                            {{ form_errors(form.name) }} 
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>{{ form_label(form.surname) }}:</th>
+                        <td>
+                            {{ form_widget(form.surname, { 'attr': {'class': 'validate[required]'}}) }}
+                        </td>
+                        <td>
+                            {{ form_errors(form.surname) }} 
+                        </td>
+                    </tr>    
+
+                    <tr>
+                        <th>{{ form_label(form.email) }}:</th>
+                        <td>
+                            {{ form_widget(form.email, { 'attr': {'class': 'validate[required, custom[email]'}}) }}
+                        </td>
+                        <td>
+                            {{ form_errors(form.email) }} 
+                        </td>
+                    </tr>             
+
+                    <tr>
+                        <th>{{ form_label(form.username) }}:</th>
+                        <td>
+                            {{ form_widget(form.username, { 'attr': {'class': 'validate[required]', 'readonly': true}}) }}
+
+                            <a style="vertical-align: middle;" data-height="80" data-url="{{ path('UserBundle_generate_login') }}" class="button-generate-login ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false">
+                                <span class="ui-button-icon-primary ui-icon ui-icon-close"></span>
+                                <span class="ui-button-text">
+                                    {% trans %}Wygeneruj{% endtrans %}
+                                </span>
+                            </a>                      
+
+                        </td>
+                        <td>
+                            {{ form_errors(form.username) }} 
+                        </td>
+                    </tr>   
+
+                </tbody>
+
+            </table>     
+
+        </div>
+
+        <div id="tabs-2">
+
+            <table class="manipulate-table">
+
+                <tbody>
+
+                    <tr>
+                        <th>{{ form_label(form.street) }} / {{ form_label(form.flat) }}:</th>
+                        <td>
+                            {{ form_widget(form.street, { 'attr': {'class': 'street'}}) }} {{ form_widget(form.flat, { 'attr': {'class': 'flat'}}) }}
+                        </td>
+                        <td>
+                            {{ form_errors(form.street) }} 
+                            {{ form_errors(form.flat) }}
+                        </td>
+                    </tr>   
+
+                    <tr>
+                        <th>{{ form_label(form.city) }}:</th>
+                        <td>
+                            {{ form_widget(form.city) }}
+                        </td>
+                        <td>
+                            {{ form_errors(form.city) }} 
+                        </td>
+                    </tr>     
+
+                    <tr>
+                        <th>{{ form_label(form.postcode) }}:</th>
+                        <td>
+                            {{ form_widget(form.postcode) }}
+                        </td>
+                        <td>
+                            {{ form_errors(form.postcode) }} 
+                        </td>
+                    </tr>       
+
+                </tbody>
+
+            </table>                
+
+        </div>
+
+        <div id="tabs-3">
+
+            <div class="group-role-content">
+
+                {% for group in group.get() %}
+                <input name="usergroups[{{loop.index0}}][group_id]" class="title" original-title="{{ group.group.name }}" type="checkbox" {% for usergroup in object.usergroups %} {% if group.group.id == usergroup.getGroupId %} checked{% endif %} {% endfor %} value="{{ group.group.id }}"> {{ group.group.name }}<br/>
+                    {% endfor %}
+
+            </div>                    
+
+        </div>
+
+        <div id="tabs-4">
+
+            <div class="group-role-content">
+
+                {% for role in role.get() %}
+                <input name="userroles[{{loop.index0}}][role_id]" class="title" original-title="{{ role.description }}" type="checkbox" {% for userrole in object.userroles %} {% if role.id == userrole.getRoleId %} checked{% endif %} {% endfor %} value="{{ role.id }}"> {{ role.name }}<br/>
+                    {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br /><br />
+
+    <a data-width="200" data-height="100" class="button-save ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false">
+        <span class="ui-button-icon-primary ui-icon {% if not object.isNew %}ui-icon-pencil{% else %}ui-icon-circle-plus{% endif %}"></span>
+        <span class="ui-button-text">
+            {% if not object.isNew %}
+            {% trans %}Zapisz{% endtrans %}
+            {% else %}
+            {% trans %}Dodaj{% endtrans %}
+            {% endif %}
+        </span>
+    </a> 
+
+    <a class="button-close ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false">
+        <span class="ui-button-icon-primary ui-icon ui-icon-close"></span>
+        <span class="ui-button-text">
+            {% trans %}Zamknij{% endtrans %}
+        </span>
+    </a>           
+
+
+    {{ form_widget(form._token) }}
+
+</form>
+
+<script type="text/javascript">
+    
+    /* ------------------------------------------- */
+    /* enable tabs */
+    /* ------------------------------------------- */    
+
+    $(".tabs").tabs();     
+    
+</script>
+
+<script src="{{ asset('/js/modal.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/user.js') }}" type="text/javascript"></script>

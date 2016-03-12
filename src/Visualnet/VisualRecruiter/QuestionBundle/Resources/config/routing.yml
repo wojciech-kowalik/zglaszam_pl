@@ -1,0 +1,46 @@
+       
+QuestionBundle_list:
+    pattern:  /admin/{_locale}/questions.{_format}
+    defaults: { _controller: QuestionBundle:Default:list, _format: html, _locale: pl}     
+    requirements:
+        _format: html|json    
+    
+QuestionBundle_new:
+    pattern:  /admin/{_locale}/new/question.html
+    defaults: { _controller: QuestionBundle:Default:new, _locale: pl }
+      
+QuestionBundle_create:
+    pattern:  /admin/{_locale}/create/question.html
+    defaults: { _controller: QuestionBundle:Default:create, _locale: pl }      
+              
+QuestionBundle_edit:
+    pattern:  /admin/{_locale}/edit/{id}/question.html
+    defaults: { _controller: QuestionBundle:Default:edit, _locale: pl }
+    requirements:
+        id:  \d+
+        _method:  GET  
+    options:
+      expose: true   
+      
+QuestionBundle_update:
+    pattern:  /admin/{_locale}/update/{id}/question.html
+    defaults: { _controller: QuestionBundle:Default:update, _locale: pl }
+    requirements:
+        id:  \d+          
+      
+QuestionBundle_delete:
+    pattern:  /admin/{_locale}/delete/{id}/question.html
+    defaults: { _controller: QuestionBundle:Default:delete, _locale: pl }
+    requirements:
+        id:  \d+
+        _method:  GET      
+    options:
+      expose: true
+      
+QuestionBundle_search:
+    pattern:  /admin/{_locale}/search/question.json
+    defaults: { _controller: QuestionBundle:Default:search, _locale: pl, _format: json}   
+    options:
+      expose: true 
+      
+   

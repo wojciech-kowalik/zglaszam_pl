@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl"> <!--<![endif]-->
+
+    <!--
+    
+    Recruitment system (zglaszam.pl) written by visualnet.pl
+    2012 All rights reserved
+    
+    -->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="system rejestracyjny zglaszam.pl" />
+        <meta name="keywords" content="zglasza, zgłaszam, zglaszam, rekrutacja, szkolenia, recruitment, training" />
+        <meta name="author" content="visualnet.pl - tel.: 0502-026-586, 0603-672-211" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />   
+        <meta name="google" content="notranslate" />    
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />   
+        <meta name="distribution" content="global" />
+        <meta name="rating" content="general" />
+
+        <title>{% block title %}zglaszam.pl{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}        
+        <link rel="canonical" href="http://www.zglaszam.pl/app/"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="/css/frontend.compressed.css.php" />
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="image_src" href="{{ asset('/images/linkrel-logo.png') }}" />
+        
+        <!-- 
+        @wk unfortunately Modernizr has to be on top :/ others scripts may be on bottom
+        I hope that IE will once maintain standards ... 
+        -->
+        <!-- Cloudflare CDN's -->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.5.3/modernizr.min.js" type="text/javascript" charset="utf-8"></script>
+    </head>        
+
+    <body>
+        
+        <div id="main-container">
+
+            <!-- Header -->
+
+            <header id="header">
+
+                <div class="wrapper">
+                    
+                    <a href="{{ url('FrontendBundle_homepage_locale', {'_locale' : app.session.locale }) }}"></a>
+
+                    <!-- Menu -->
+
+                    <nav id="navigation">                        
+                        {% include "FrontendBundle:Box:menu.html.twig" %}
+                    </nav>
+
+                    <!-- / Menu -->
+
+                    <div id="description-content">
+
+                        <!-- Slider -->
+                        <ul class="bjqs">
+                            <li>
+
+                                <div class="header">
+                                    {% trans %}Witamy{% endtrans %}!
+                                </div>                                
+
+                                {% trans %}
+                                Nasz system umożliwi Państwu prowadzenie rejestracji uczestników na wszelkiego rodzaju szkolenia, konferencje, spotkania.
+                                Ankietowanie wśród określonych grup respondentów - formularz może być ankietą!!
+                                <br /><br />
+                                Export danych do wszystkich popularnych formatów danych oraz zarządzanie uczestnikami (kwalifikacja, usuwanie, dodawanie)
+                                {% endtrans %}     
+
+                            </li>
+                            <li>
+
+                                <div class="header">
+                                    {% trans %}Szybki System Rejestracji{% endtrans %}!
+                                </div>                                
+
+                                {% trans %}
+                                Zglaszam.pl umożliwi Państwu szybką i sprawną organizację rejestracji na każde wydarzenie. 
+                                <br /><br />
+                                Wystarczy zaprojektować swój własny formularz i poinformować potencjalnych uczestników. 
+                                {% endtrans %}     
+
+                            </li>
+                            <li>
+
+                                <div class="header">
+                                    {% trans %}Proste zarządzanie uczestnikami{% endtrans %}!
+                                </div>                                
+
+                                {% trans %}
+                                To Ty ustalasz liczbę miejsc oraz potwierdzasz uczestnictwo.
+                                {% endtrans %}     
+
+                            </li>
+                            <li>
+
+                                <div class="header">
+                                    {% trans %}Ilość nie ma znaczenia{% endtrans %}!
+                                </div>                                
+
+                                {% trans %}
+                                Możesz prowadzić rejestrację nawet dla kilku osób, możesz dla kilku tysięcy,
+                                gdy tylko będziesz potrzebować czegoś więcej niż potrafi nasz system zgłoś się do nas indywidualnie.
+                                {% endtrans %}     
+                                <br /><br />
+                                <div class="bold-font">
+                                    {% trans %}Na pewno coś wymyślimy!{% endtrans %}!
+                                </div>                                  
+
+                            </li>                            
+                        </ul>
+                        <!-- / Slider -->
+
+                    </div>
+
+                    <div class="button-register-top">
+                        <div class="button-register"><span><a class="button-redirect" href="{{ url('FrontendBundle_register', {'_locale' : app.session.locale }) }}">{% trans %}Zarejestruj się{% endtrans %}</a></span></div>    
+                    </div>
+
+                    <div class="button-learn-top">
+                        <div class="button-learn"><span><a class="button-redirect" href="javascript:void(0);">{% trans %}Dowiedz się więcej{% endtrans %}</a></span></div>    
+                    </div>                
+
+                    <!-- Description in circles -->
+
+                    <div id="circle-1-content">
+                        <div id="circle-1-img"></div>
+                        <div id="circle-1-description-header">Dołącz</div>
+                        <div id="circle-1-description">Wystarczy jedynie wypełnić krótki formularz rejestracyjny</div>
+                    </div>
+
+                    <div id="circle-2-content">
+                        <div id="circle-2-img"></div>
+                        <div id="circle-2-description-header">Stwórz własną rejestrację</div>
+                        <div id="circle-2-description">Budujesz formularz, wybierasz pytania a następnie tworzysz rejestrację</div>
+                    </div>                    
+
+                    <div id="circle-3-content">
+                        <div id="circle-3-img"></div>
+                        <div id="circle-3-description-header">Powiadom uczestników</div>
+                        <div id="circle-3-description">Na zbudowanej podstronie zainteresowani mogą już się rejestrować</div>
+                    </div>   
+
+                    <!-- / Description in circles -->
+
+                </div>
+
+            </header>
+
+            <!-- / Header -->
+
+            <!-- Content -->
+
+            <div class="wrapper">
+
+                <section>
+                    
+                    {% if app.session.flash("error") %}
+                    <div class="ui-widget">
+                        <div class="ui-state-error ui-corner-all monit-content">
+                            <span class="ui-icon ui-icon-alert monit-icon"></span>
+                                <span class="monit-text error">{{ app.session.flash("error") }}</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if app.session.flash("success") %}
+                    <div class="ui-widget">
+                        <div class="ui-state-highlight ui-corner-all monit-content">
+                            <span class="ui-icon ui-icon-info monit-icon"></span>
+                                {{ app.session.flash("success") }}
+                        </div>
+                    </div>
+                    {% endif %}    
+
+                    <section id="dynamic-content">
+                        {% block body %}
+                        {% endblock %}
+                    </section>
+
+                </section>
+
+                <!-- Slides -->
+
+                <section id="slides">
+
+                    
+                    <!-- Notice dude -->
+
+                    <div id="notice">
+
+                        <!-- Thought -->
+
+                        <div id="ballon">
+                            <div class="ballon-content">zobacz jak to działa!</div>
+                        </div>
+
+                        <!-- / Thought -->
+
+                    </div>
+
+                    <!-- / Notice dude -->
+
+                    <!-- Cards with description -->
+
+                    <div id="cards">
+
+                        <div class="card">
+                            <div class="card-header">{% trans %}Wiele opcji w jednym formularzu{% endtrans %}</div>
+                            <div class="card-content">{% trans %}System umożliwia Państwu tworzenie własnych pytań oraz typów odpowiedzi, zaawansowane funkcje pozwalają kontrolować informacje wprowadzane przez uczestnika{% endtrans %}</div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">Kompatybilność systemowa</div>
+                            <div class="card-content">Dołożyliśmy wszelkich starań aby nasz system był zgodny ze wszystkimi wiodącymi przeglądarkami internetowymi, dlatego możesz korzystać z narzędzia w swoim ulubionym środowisku</div>
+                        </div>
+
+                    </div>
+
+                    <!-- / Cards with description -->
+
+                    <!-- Screens -->
+
+                    <section class="images">
+
+                        <div class="slides-content">
+                            <a href="{{ asset('/images/1b.png') }}" title="Lista dostępnych pytań" rel="lightbox[roadtrip]">
+                                <img class="lazy-load" data-original="{{ asset('/images/1s.png') }}" src="{{ asset('/images/grey.gif') }}" alt="" />
+                            </a>
+                            <div class="bar"><span>Lista dostępnych pytań</span></div>    
+                        </div>
+
+                        <div class="slides-content">
+                            <a href="{{ asset('/images/2b.png') }}" title="Edycja użytkownika" rel="lightbox[roadtrip]">
+                                <img class="lazy-load" data-original="{{ asset('/images/2s.png') }}" src="{{ asset('/images/grey.gif') }}" alt="" />
+                            </a>
+                            <div class="bar"><span>Edycja użytkownika</span></div>     
+                        </div>
+                        <div class="slides-content">
+                            <a href="{{ asset('/images/3b.png') }}" title="Export danych uczestników" rel="lightbox[roadtrip]">
+                                <img class="lazy-load" data-original="{{ asset('/images/3s.png') }}" src="{{ asset('/images/grey.gif') }}" alt="" />
+                            </a>
+                            <div class="bar"><span>Export danych uczestników</span></div>    
+                        </div>                    
+
+                    </section>
+
+                    <!-- / Screens -->
+
+                </section>
+
+                <!-- / Slides -->
+
+            </div>
+
+            <!-- / Content -->
+
+        </div>
+
+        <!-- Footer -->
+
+        <footer id="footer">
+
+            <div class="wrapper">
+
+                <!-- Contact -->
+
+                <div id="element-1-content">
+                    <div id="header-section">KONTAKT:</div>   
+
+                    <!-- hCard microformat -->
+
+                    <div class="vcard">
+                        <span class="fn n">
+                            <span class="given-name">
+                                <img class="lazy-load" data-original="{{ asset('/images/visualnet-logo.gif') }}" src="{{ asset('/images/grey.gif') }}" alt="" />
+                            </span>
+                            <span class="additional-name"></span>
+                            <span class="family-name"></span>
+                        </span>
+                        <br />
+                        <span>www:</span> <a class="url" href="http://www.visualnet.pl">www.visualnet.pl</a>
+                        <br />
+                        <span>email:</span> <a class="email" href="mailto:poczta@visualnet.pl">poczta@visualnet.pl</a>
+                        <br />
+                        <div class="tel">0-502-026-586</div>
+                        <div class="adr">
+                            <div class="street-address">ul. Wyszyńskiego 19</div>
+                            <span class="locality">Zabrze</span>,
+                            <abbr class="region" title="śląskie">śląskie</abbr>,
+                            <span class="postal-code">41-808</span>
+                            <div class="country-name">Polska</div>
+                        </div>
+                        
+                        <div id="gplus">
+                            <g:plusone size="medium" href="http://www.zglaszam.pl"></g:plusone>
+                        </div>
+                        
+                        <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.zglaszam.pl&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=tahoma&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:21px;" allowTransparency="true"></iframe>
+                  
+                    </div>   
+
+                    <!-- / hCard microformat -->
+
+                </div>
+
+                <!-- / Contact -->
+
+                <!-- Site map -->
+
+                <div id="element-2-content">   
+
+                    <div id="header-section">MAPA STRONY:</div>
+                    <nav id="sitemap">                        
+                        {% include "FrontendBundle:Box:sitemap.html.twig" %}
+                    </nav>                  
+
+                </div>
+
+                <!-- / Site map -->
+
+                <!-- Register -->
+
+                <div id="element-3-content">   
+                    <div id="header-section">ZAREJESTRUJ SIĘ JUŻ TERAZ:</div>
+
+                    <img src="{{ asset('/images/check.png') }}" alt="" />wystarczy podać swoje podstawowe dane<br />
+                    <img src="{{ asset('/images/check.png') }}" alt="" />po rejestracji stajesz się administratorem grupy<br />
+                    <img src="{{ asset('/images/check.png') }}" alt="" />jako administrator masz pełne prawo zarządzania<br />
+
+                    <br />
+                    <div class="left">
+                        <div class="button-register"><span><a class="button-redirect" href="{{ url('FrontendBundle_register', {'_locale' : app.session.locale }) }}">{% trans %}Zarejestruj się{% endtrans %}</a></span></div>    
+                    </div>
+
+                </div>   
+
+                <!-- / Register -->
+
+                <!-- Copyright -->
+
+                <div id="copyright">
+                    version: {{ vr_version }}_{{ app.session.locale }} &copy; zglaszam.pl {{ "now"|date("Y") }}. Wszelkie prawa zastrzeżone
+                </div>   
+
+                <!-- / Copyright -->
+
+            </div>
+            <div id="dark-bar"></div> 
+
+        </footer>
+
+        <!-- / Footer -->
+
+        {% include "::loader.html.twig" %}        
+
+        <div class="dialog" title="Komunikat"> </div>
+        <div class="confirm" title="Komunikat"> </div>
+
+        {% include '::basefrontjs.html.twig' %}
+
+        {% block javascripts %}{% endblock %}
+    
+        <!-- Prompt IE 6,7 users to install Chrome Frame. Remove this if you want to support IE 6,7 chromium.org/developers/how-tos/chrome-frame-getting-started -->
+        <!--[if lt IE 8 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+
+    </body>
+</html>

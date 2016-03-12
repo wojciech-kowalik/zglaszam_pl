@@ -1,0 +1,79 @@
+[symfony]
+    git=http://github.com/symfony/symfony.git
+    version=v2.0.17
+
+[twig]
+    git=http://github.com/fabpot/Twig.git
+    version=v1.10.0
+
+[monolog]
+    git=http://github.com/Seldaek/monolog.git
+    version=1.0.2
+
+[assetic]
+    git=http://github.com/kriswallsmith/assetic.git
+    version=v1.0.2
+
+[twig-extensions]
+    git=http://github.com/fabpot/Twig-extensions.git
+
+[metadata]
+    git=http://github.com/schmittjoh/metadata.git
+    version=1.0.0
+
+[SensioFrameworkExtraBundle]
+    git=http://github.com/sensio/SensioFrameworkExtraBundle.git
+    target=/bundles/Sensio/Bundle/FrameworkExtraBundle
+    version=origin/2.0
+
+[JMSSecurityExtraBundle]
+    git=http://github.com/schmittjoh/JMSSecurityExtraBundle.git
+    target=/bundles/JMS/SecurityExtraBundle
+    version=origin/1.0.x
+
+[SensioDistributionBundle]
+    git=http://github.com/sensio/SensioDistributionBundle.git
+    target=/bundles/Sensio/Bundle/DistributionBundle
+    version=origin/2.0
+
+[SensioGeneratorBundle]
+    git=http://github.com/sensio/SensioGeneratorBundle.git
+    target=/bundles/Sensio/Bundle/GeneratorBundle
+    version=origin/2.0
+
+[AsseticBundle]
+    git=http://github.com/symfony/AsseticBundle.git
+    target=/bundles/Symfony/Bundle/AsseticBundle
+    version=v1.0.1
+[PropelBundle]
+    git=https://github.com/propelorm/PropelBundle.git
+    target=/bundles/Propel/PropelBundle
+    version=origin/1.0
+[phing]
+    git=https://github.com/Xosofox/phing
+[propel]
+    git=https://github.com/propelorm/Propel.git
+[BreadcrumbTrailBundle]
+    git=git://github.com/Abhoryo/APYBreadcrumbTrailBundle.git
+    target=bundles/APY/BreadcrumbTrailBundle
+[GregwarCaptchaBundle]
+    git=git://github.com/Gregwar/CaptchaBundle.git
+    target=/bundles/Gregwar/CaptchaBundle
+    version=origin/2.0
+[knp-components]
+    git=http://github.com/KnpLabs/knp-components.git
+
+[KnpPaginatorBundle]
+    git=http://github.com/KnpLabs/KnpPaginatorBundle.git
+    target=bundles/Knp/Bundle/PaginatorBundle
+[FOSJsRoutingBundle]
+    git=http://github.com/FriendsOfSymfony/FOSJsRoutingBundle.git
+    target=bundles/FOS/JsRoutingBundle
+
+[n3bStreamresponse]
+    git=https://github.com/liuggio/Symfony2-StreamResponse.git
+    target=n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse
+
+[liuggioExcelBundle]
+    git=http://github.com/liuggio/ExcelBundle.git
+    target=/bundles/liuggio/ExcelBundle

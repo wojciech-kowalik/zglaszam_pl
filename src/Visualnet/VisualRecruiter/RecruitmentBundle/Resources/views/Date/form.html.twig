@@ -1,0 +1,158 @@
+
+<form id="form-validate" novalidate="novalidate" action="{% if object.isNew %}{{ path('RecruitmentBundle_date_create', {'mainID': mainID }) }}{% else %}{{ url('RecruitmentBundle_date_update', {'id' : object.id, 'mainID': mainID }) }}{% endif %}"  method="post" {{ form_enctype(form) }}>
+
+      <input type="hidden" name="mainID" value="{{ mainID }}">      
+
+        {% if not object.isNew %}
+        <input type="hidden" name="sf_method" value="PUT" />
+        {% endif %}
+
+        <!--  global errors container  -->
+        <span id="global-errors" class="hidden error">example</span>          
+
+        <div class="tabs">
+            <ul>
+                <li><a href="#tabs-1">Dane podstawowe</a></li>
+                <li><a href="#tabs-2">Limity</a></li>
+            </ul>
+            <div id="tabs-1">
+
+                <table id="manipulate-table">
+
+                    <tbody>
+
+                        <tr>
+                            <th>{{ form_label(form.is_active) }}:</th>
+                            <td>{{ form_widget(form.is_active) }}</td>
+                            <td>{{ form_errors(form.is_active) }}</td>
+                        </tr>                         
+
+                        <tr>
+                            <th>{{ form_label(form.is_not_set_event_date) }}:</th>
+                            <td>{{ form_widget(form.is_not_set_event_date) }}</td>
+                            <td>{{ form_errors(form.is_not_set_event_date) }}</td>
+                        </tr>   
+                        
+                        <tr>
+                            <th>{{ form_label(form.is_automatic_qualify) }}:</th>
+                            <td>{{ form_widget(form.is_automatic_qualify) }}</td>
+                            <td>{{ form_errors(form.is_automatic_qualify) }}</td>
+                        </tr>                          
+
+                        <tr>
+                            <th>{{ form_label(form.event_date_from) }}:</th>
+                            <td>{{ form_widget(form.event_date_from, { 'attr': {'class': 'datepicker'} }) }}</td>
+                            <td>{{ form_errors(form.event_date_from) }}</td>
+                        </tr> 
+
+                        <tr>
+                            <th>{{ form_label(form.event_date_to) }}:</th>
+                            <td>{{ form_widget(form.event_date_to, { 'attr': {'class': 'datepicker'} }) }}</td>
+                            <td>{{ form_errors(form.event_date_to) }}</td>
+                        </tr>     
+
+                        <tr>
+                            <th>{{ form_label(form.no_active_text) }}:</th>
+                            <td>{{ form_widget(form.no_active_text, { 'attr': {'placeholder': 'Domyślny tekst to: Termin jest nieaktywny'} }) }}</td>
+                            <td>{{ form_errors(form.no_active_text) }}</td>
+                        </tr>                          
+
+                    </tbody>
+
+                </table>
+
+            </div>
+            <div id="tabs-2">
+
+                <table id="manipulate-table">
+
+                    <tbody>
+
+                        <tr>
+                            <th>{{ form_label(form.used_limit) }}:</th>
+                            <td>{{ form_widget(form.used_limit, { 'attr': {'readonly': 'true'} }) }}</td>
+                            <td>{{ form_errors(form.used_limit) }}</td>
+                        </tr>   
+
+
+                        <tr>
+                            <th>{{ form_label(form.set_limit) }}:</th>
+                            <td>{{ form_widget(form.set_limit, { 'attr': {'placeholder': '0'} }) }}</td>
+                            <td>{{ form_errors(form.set_limit) }}</td>
+                        </tr>                         
+
+                        <tr>
+                            <th>{{ form_label(form.is_visible_limit) }}:</th>
+                            <td>{{ form_widget(form.is_visible_limit) }}</td>
+                            <td>{{ form_errors(form.is_visible_limit) }}</td>
+                        </tr>                                                
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <br /><br />
+
+        <a data-width="200" data-height="100" class="button-save ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false">
+            <span class="ui-button-icon-primary ui-icon {% if not object.isNew %}ui-icon-pencil{% else %}ui-icon-circle-plus{% endif %}"></span>
+            <span class="ui-button-text">
+                {% if not object.isNew %}
+                {% trans %}Zapisz{% endtrans %}
+                {% else %}
+                {% trans %}Dodaj{% endtrans %}
+                {% endif %}
+            </span>
+        </a> 
+
+        <a class="button-close ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false">
+            <span class="ui-button-icon-primary ui-icon ui-icon-close"></span>
+            <span class="ui-button-text">
+                {% trans %}Zamknij{% endtrans %}
+            </span>
+        </a>           
+
+
+        {{ form_widget(form._token) }}
+
+</form>
+
+
+
+<script type="text/javascript">
+    
+    /* ------------------------------------------- */
+    /* enable tabs */
+    /* ------------------------------------------- */    
+
+    $(".tabs").tabs();     
+
+    $.datepicker.setDefaults($.datepicker.regional['~app.session.locale~']);
+
+    $( ".datepicker" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+        showButtonPanel: true,
+        showOn: "button",
+        buttonImage: "{{ asset('images/calendar.gif') }}",
+        buttonImageOnly: true           
+    });
+
+    {#
+        $.timepicker.setDefaults($.timepicker.regional['~app.session.locale~']);
+
+        $( ".datetimepicker" ).datetimepicker({
+            dateFormat: 'yy-mm-dd',
+            showButtonPanel: true,
+            showOn: "button",
+            buttonImage: "{{ asset('images/calendar.gif') }}",
+            buttonImageOnly: true           
+        });    
+    #}
+
+</script>  
+
+<script src="{{ asset('/js/modal.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/recruitment.js') }}" type="text/javascript"></script>

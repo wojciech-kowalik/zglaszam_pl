@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+    
+  <header>
+    {% for headerItem in export.headers %}<item>{{ headerItem }}</item>{% endfor %} 
+  </header>
+    
+    <data>
+    {% for dataItem in export.data %}
+    <item>
+    {% for item in dataItem %}<value>{{ item }}</value>{% endfor %}
+    </item>
+    {% endfor %}
+    </data>  
+    
+</list>

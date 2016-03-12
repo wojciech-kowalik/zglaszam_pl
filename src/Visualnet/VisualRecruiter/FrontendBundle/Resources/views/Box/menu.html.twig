@@ -1,0 +1,17 @@
+<div class="content">
+
+    <a  class="{% if app.request.get('slug') is null %}active{% else %}default{% endif %}" href="{{ url('FrontendBundle_homepage_locale', {'_locale' : app.session.locale }) }}">{% trans %}Strona główna{% endtrans %}</a>
+    {% for element in menu.get(true) %}
+    <a class="{% if app.request.get('slug') is defined and app.request.get('slug') == element.slug %}active{% else %}default{% endif %}" href="{% if element.url %}{{element.url}}{% else %}{{ url('FrontendBundle_static', {'slug' : element.slug, '_locale': app.session.locale }) }}{% endif %}">{{ element.getName }}</a>
+    {% endfor %} 
+    
+</div>
+
+<div class="button-login-menu"><span><a class="button-redirect" href="{{ url('RecruitmentBundle_list', {'_locale' : app.session.locale }) }}.html">{% trans %}Zaloguj się{% endtrans %}</a></span></div>    
+
+{% if app.user and is_granted("IS_AUTHENTICATED_FULLY") %}
+<div style="margin-right: 10px; float: right;">
+    <a style="color:red" href="{{ path('FrontendBundle_logout') }}">Wyloguj</a>
+</div>
+{% endif %}
+

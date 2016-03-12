@@ -1,0 +1,110 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+
+<div class="header-content">{% trans %}Uczestnicy{% endtrans %} ({% trans %}rejestracja{% endtrans %} {{ recruitmentSession["Name"] }})</div>
+
+<div class="header-content">{% trans %}Opcje dodatkowe{% endtrans %}</div>
+
+        <div class="tabs">
+            <ul>
+                <li><a href="#tabs-1">Filtrowanie</a></li>
+                <li><a href="#tabs-2">Kwalifikacja</a></li>
+                <li><a href="#tabs-3">Export</a></li>
+            </ul>
+            <div id="tabs-1">
+                {% render "RecruitmentBundle:RecruitmentDate:get" with {'recruitmentDateId': recruitmentDateId} %}                
+            </div>
+            <div id="tabs-2">
+
+                <div class="option-element">{% trans %}Kwalifikacja{% endtrans %}:
+                    <span style="font-style: italic;">
+                        {% trans %}zaznaczono <span id="qualify-counter">0</span> uczestnika(ów){% endtrans %}&nbsp;
+                    </span>
+                    </div>
+                   <br />
+                    <a id="recruitment-qualify-users" class="button-new" data-href="" href="#" >
+                        {% trans %}Kwalifikuj{% endtrans %}
+                    </a>                    
+
+            </div>
+            <div id="tabs-3">
+                <div class="option-element">{% trans %}Export{% endtrans %}:</div><br />
+                
+                    <a class="button-new" href="{{ path('RecruitmentBundle_users_export', {'type': 'csv', 'from':from }) }}" >
+                        {% trans %}CSV{% endtrans %}
+                    </a>     
+                
+                    <a class="button-new" href="{{ path('RecruitmentBundle_users_export', {'type': 'xml', 'from':from }) }}" >
+                        {% trans %}XML{% endtrans %}
+                    </a>       
+                
+                    <a class="button-new" href="{{ path('RecruitmentBundle_users_export', {'type': 'json', 'from':from }) }}" >
+                        {% trans %}JSON{% endtrans %}
+                    </a>                   
+                
+                    <a class="button-new" href="{{ path('RecruitmentBundle_users_export', {'type': 'xls', 'from':from }) }}" >
+                        {% trans %}XLS{% endtrans %}
+                    </a>                   
+                
+            </div>
+        </div>
+
+<br /><br />
+
+<table id="list"></table> 
+<div id="pager"></div>
+
+<div class="header-content">{% trans %}Legenda{% endtrans %}</div>
+
+<span class="legend-elements">
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-person"></span> <span class="ui-button-text">Podgląd danych</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-close"></span> <span class="ui-button-text">Usuń</span>
+</a>
+
+</span>   
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="{{ asset('/js/recruitment.js') }}" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    {% if recruitmentDateId %}
+    var url = "{{ url('RecruitmentBundle_users_date', {'id': recruitmentDateId, '_format' : 'json' }) }}";
+    {% else %}
+    var url = "{{ url('RecruitmentBundle_users', {'_format' : 'json' }) }}";
+    {% endif %}
+
+    var routingNames = {show: {name: 'RecruitmentBundle_user_show', height: 370, width: 320}}
+
+    {% if is_granted("ROLE_ADMIN_GODMODE") %}
+    routingNames.del = {name: 'RecruitmentBundle_user_delete', height: 120, width: 180};
+    {% endif %}    
+
+    var colNames = ['Id', 'Imię', 'Nazwisko', 'Email', 'Kwalifikowany', 'Akcje'];
+    var colModels = [ 
+        {name:'id',index:'id', width:25, search:true}, 
+        {name:'name',index:'name', search:true}, 
+        {name:'surname',index:'surname',  search:true}, 
+        {name:'email',index:'email',  search:true, formatter: emailFormater}, 
+        {name:'isQualify',index:'isQualify',  sortable: true, search:false, formatter: booleanFormater},
+        {name:'actions',index:'actions', sortable:false, search:false},
+    ];
+
+    var config = {'multiselect': true};
+
+    jqGridInit(url, routingNames, colNames, colModels, 'id', config);
+    jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false, search:false});
+    jQuery("#list").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : true, defaultSearch:"eq"});
+
+</script>   
+
+{% endblock %}

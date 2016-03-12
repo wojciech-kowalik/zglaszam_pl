@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="default" namespace="Visualnet\VisualRecruiter\RecruitmentBundle\Model" defaultIdMethod="native" tablePrefix="visual_">
+
+  <table name="recruitment" phpName="Recruitment">
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>
+    <behavior name="timestampable" />
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="form_id" type="INTEGER" required="true"/>
+    <column name="user_id" type="INTEGER" required="true"/>
+    <column name="group_id" type="INTEGER" required="true"/>
+    <column name="name" type="VARCHAR" size="100" required="true"/>
+    <column name="alias_name" type="VARCHAR" size="30" required="true"/>
+    <column name="place"  type="VARCHAR" size="255" required="false"/>
+    <column name="is_active" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <column name="description" type="LONGVARCHAR" required="false"/>
+    <index>
+        <index-column name="alias_name" />
+    </index>  
+    <foreign-key foreignTable="form" name="fk_rf_1">
+      <reference local="form_id" foreign="id" />
+    </foreign-key>    
+    <foreign-key foreignTable="user" name="fk_ru_2">
+      <reference local="user_id" foreign="id" />
+    </foreign-key>      
+    <foreign-key foreignTable="group" name="fk_rg_3">
+      <reference local="group_id" foreign="id" />
+    </foreign-key>       
+  </table>
+  
+  <table name="recruitment_date" phpName="RecruitmentDate">
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>
+    <behavior name="timestampable" />
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="recruitment_id" type="INTEGER" required="true"/>
+    <column name="event_date_from"  type="TIMESTAMP" required="true"/>
+    <column name="event_date_to"  type="TIMESTAMP" required="true"/> 
+    <column name="no_active_text"  type="VARCHAR" size="255" required="false"/>
+    <column name="used_limit" type="SMALLINT" defaultValue="0" /> 
+    <column name="set_limit" type="SMALLINT" defaultValue="0"  /> 
+    <column name="is_visible_limit" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <column name="is_not_set_event_date" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <column name="is_active" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <column name="is_automatic_qualify" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <foreign-key foreignTable="recruitment" onDelete="cascade" onUpdate="cascade" name="fk_rdr_1">
+      <reference local="recruitment_id" foreign="id" />
+    </foreign-key>        
+  </table>  
+    
+  <table name="recruitment_user" phpName="RecruitmentUser">
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>
+    <behavior name="timestampable" />
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="recruitment_id" type="INTEGER" required="true"/>
+    <column name="recruitment_date_id" type="INTEGER" required="true"/>
+    <column name="name" type="VARCHAR" size="40" required="true"/>
+    <column name="surname" type="VARCHAR" size="60" required="true"/>
+    <column name="email" type="VARCHAR" size="255" required="true"/>
+    <column name="is_qualify" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <column name="is_active" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <index name="i_ru">
+      <index-column name="is_active"/>
+      <index-column name="is_qualify"/>
+    </index>    
+    <foreign-key foreignTable="recruitment" onDelete="cascade" onUpdate="cascade" name="fk_rru_1">
+      <reference local="recruitment_id" foreign="id" />
+    </foreign-key>       
+    <foreign-key foreignTable="recruitment_date" onDelete="cascade" onUpdate="cascade" name="fk_rdru_2">
+      <reference local="recruitment_date_id" foreign="id" />
+    </foreign-key>      
+  </table>      
+    
+  <table name="recruitment_user_data" phpName="RecruitmentUserData">
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="user_recruitment_id" type="INTEGER" required="true"/>
+    <column name="question_id" type="INTEGER" required="true"/>
+    <column name="value" type="LONGVARCHAR" required="false"/>   
+    <foreign-key foreignTable="recruitment_user" onDelete="cascade" onUpdate="cascade" name="fk_rudru_1">
+      <reference local="user_recruitment_id" foreign="id" />
+    </foreign-key>       
+    <foreign-key foreignTable="question" onDelete="cascade" onUpdate="cascade" name="fk_rudq_2">
+      <reference local="question_id" foreign="id" />
+    </foreign-key>      
+  </table>      
+    
+</database>  
+  

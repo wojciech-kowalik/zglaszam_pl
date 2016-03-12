@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="pl" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>individual</source>
+                <target>osoba fizyczna</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>firm</source>
+                <target>firma</target>
+            </trans-unit>   
+            <trans-unit id="3">
+                <source>text</source>
+                <target>tekstowe</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>textarea</source>
+                <target>wielowierszowe tekstowe</target>
+            </trans-unit>      
+            <trans-unit id="5">
+                <source>checkbox</source>
+                <target>checkbox</target>
+            </trans-unit>  
+            <trans-unit id="6">
+                <source>radio</source>
+                <target>jednokrotnego wyboru</target>
+            </trans-unit>  
+            <trans-unit id="7">
+                <source>header</source>
+                <target>nagłówek</target>
+            </trans-unit>   
+            <trans-unit id="8">
+                <source>dropdown</source>
+                <target>rozwijane</target>
+            </trans-unit>               
+            <trans-unit id="9">
+                <source>predefined</source>
+                <target>predefiniowane</target>
+            </trans-unit>   
+            <trans-unit id="10">
+                <source>class</source>
+                <target>modułowy</target>
+            </trans-unit>               
+            <trans-unit id="11">
+                <source>regular_expression</source>
+                <target>wyrażenie regularne</target>
+            </trans-unit>     
+           <trans-unit id="12">
+                <source>length</source>
+                <target>limit znaków</target>
+            </trans-unit>     
+            <trans-unit id="13">
+                <source>This value is not a valid email address</source>
+                <target>Nieprawidłowy adres email</target>
+            </trans-unit>   
+            <trans-unit id="14">
+                <source>This value is not a valid NIP value</source>
+                <target>Nieprawidłowy numer NIP</target>
+            </trans-unit>    
+            <trans-unit id="15">
+                <source>This value is not a valid mobile phone value</source>
+                <target>Nieprawidłowy numer telefonu komórkowego</target>
+            </trans-unit>     
+            <trans-unit id="16">
+                <source>This value is not a valid postcode value</source>
+                <target>Nieprawidłowy kod pocztowy</target>
+            </trans-unit>     
+            <trans-unit id="17">
+                <source>This value is not a valid string</source>
+                <target>Wymagane są same litery</target>
+            </trans-unit>   
+            <trans-unit id="18">
+                <source>This value is not a valid number</source>
+                <target>Nieprawidłowy format liczbowy</target>
+            </trans-unit>      
+            <trans-unit id="19">
+                <source>Bad code value</source>
+                <target>Proszę wpisać poprawny kod</target>
+            </trans-unit>            
+   
+            <trans-unit id="20">
+                <source>url</source>
+                <target>adres www</target>
+            </trans-unit>   
+            
+            <trans-unit id="21">
+                <source>phone</source>
+                <target>telefon</target>
+            </trans-unit>      
+            
+            <trans-unit id="22">
+                <source>mobilephone</source>
+                <target>telefon komórkowy</target>
+            </trans-unit>      
+            
+            <trans-unit id="23">
+                <source>postcode</source>
+                <target>kod pocztowy</target>
+            </trans-unit>   
+            
+            <trans-unit id="24">
+                <source>string</source>
+                <target>wartość tekstowa</target>
+            </trans-unit>    
+            
+            <trans-unit id="25">
+                <source>number</source>
+                <target>wartość liczbowa</target>
+            </trans-unit>             
+            
+        </body>
+    </file>
+</xliff>

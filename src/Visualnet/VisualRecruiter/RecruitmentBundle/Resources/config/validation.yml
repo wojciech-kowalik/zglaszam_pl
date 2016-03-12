@@ -1,0 +1,25 @@
+Visualnet\VisualRecruiter\RecruitmentBundle\Model\Recruitment:
+  
+  properties:
+    name:
+      - NotBlank:
+          message: Pole wymagane
+    alias_name:
+      - NotBlank: 
+          message: Pole wymagane      
+    place:
+      - NotBlank: 
+          message: Pole wymagane           
+      
+Visualnet\VisualRecruiter\RecruitmentBundle\Model\RecruitmentDate:
+  
+  getters:
+      integerValue:
+          - "True": { message: "Ilość miejsc powinna być liczbą całkowitą" } 
+      rightDate:
+          - "True": { message: "Data zakończenia zdarzenia musi być późniejsza niż data rozpoczęcia" }   
+          
+  properties: 
+    set_limit:
+      - NotBlank:
+          message: Pole wymagane                     

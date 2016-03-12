@@ -1,0 +1,259 @@
+
+<div class="content-header">{% trans %}Rejestracja{% endtrans %}</div>
+
+<form id="form-validate" novalidate="novalidate" action="{{ path('FrontendBundle_register') }}" method="post">
+
+    {# {{ form_errors(form) }} #}
+    
+    {% if errors %}
+    
+    <ul>
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+    
+    {% endif %}
+
+    <table class="register-table">
+
+        <tbody>
+
+            <tr>
+                <td colspan="3">
+                    <div class="bar"><span>{% trans %}Dane podstawowe{% endtrans %}</span></div>                   
+                </td>
+            </tr>               
+
+            <tr>
+                <th>{{ form_label(form.type) }}*</th>
+                <td>
+                    {{ form_widget(form.type, { 'attr': {'class': 'validate[required]'}}) }}
+                </td>
+                <td>
+                    {# {{ form_errors(form.type) }} #}
+                </td>
+            </tr>            
+
+            <tr>
+                <th>{{ form_label(form.name) }}*</th>
+                <td>
+                    {{ form_widget(form.name, { 'attr': {'class': 'validate[required]'}}) }}
+                </td>
+                <td>
+                    {# {{ form_errors(form.name) }} #}
+                </td>
+            </tr>
+
+            <tr>
+                <th>{{ form_label(form.surname) }}*</th>
+                <td>
+                    {{ form_widget(form.surname, { 'attr': {'class': 'validate[required]'}}) }}
+                </td>
+                <td>
+                    {# {{ form_errors(form.surname) }} #}
+                </td>
+            </tr>    
+
+            <tr>
+                <th>{{ form_label(form.email) }}*</th>
+                <td>
+                    {{ form_widget(form.email, { 'attr': {'class': 'validate[required, custom[email]'}}) }}
+                </td>
+                <td>
+                    {# {{ form_errors(form.email) }} #}
+                </td>
+            </tr>             
+
+            <tr>
+                <th>{{ form_label(form.username) }}*</th>
+                <td>
+                    {{ form_widget(form.username, { 'attr': {'class': 'validate[required]'}}) }}
+                </td>
+                <td>
+                    {# {{ form_errors(form.username) }} #}
+                </td>
+            </tr>   
+
+            <tr>
+                <th>{{ form_label(form.password) }}*</th>
+                <td>
+                    {{ form_widget(form.password, { 'attr': {'class': 'validate[required]'}}) }}
+                </td>
+                <td>
+                    {# {{ form_errors(form.password) }} #} 
+                </td>
+            </tr>            
+
+        </tbody>
+
+        <tbody>
+
+            <tr>
+                <td colspan="3">
+                    <div class="bar"><span>{% trans %}Dane adresowe{% endtrans %}</span></div>                   
+                </td>
+            </tr>                
+
+            <tr>
+                <th>{{ form_label(form.street) }} / {{ form_label(form.flat) }}</th>
+                <td>
+                    {{ form_widget(form.street, { 'attr': {'class': 'street'}}) }} {{ form_widget(form.flat, { 'attr': {'class': 'flat'}}) }} (np. 13/47)
+                </td>
+                <td>
+                    {# {{ form_errors(form.street) }} 
+                    {{ form_errors(form.flat) }} #}
+                </td>
+            </tr>   
+
+            <tr>
+                <th>{{ form_label(form.city) }}</th>
+                <td>
+                    {{ form_widget(form.city) }}
+                </td>
+                <td>
+                    {# {{ form_errors(form.city) }} #}
+                </td>
+            </tr>     
+
+            <tr>
+                <th>{{ form_label(form.postcode) }}</th>
+                <td>
+                    {{ form_widget(form.postcode) }}
+                </td>
+                <td>
+                   {# {{ form_errors(form.postcode) }} #}
+                </td>
+            </tr>                        
+
+        </tbody>
+        
+        <tbody id="company-data" class="hidden">
+
+            <tr>
+                <td colspan="3">
+                    <div class="bar"><span>{% trans %}Dane firmy{% endtrans %}</span></div>                   
+                </td>
+            </tr>                
+
+            <tr>
+                <th>{{ form_label(form.group.name) }}</th>
+                <td>
+                    {{ form_widget(form.group.name) }}
+                </td>
+                <td>
+                    {# {{ form_errors(form.group.name) }} #}
+                </td>
+            </tr>  
+            
+            <tr>
+                <th  colspan="2">
+                    <div class="data-the-same-row">
+                        <input id="data-the-same" type="checkbox" value="1" > 
+                            <label for="data-the-same">{% trans %}dane adresowe firmy takie same{% endtrans %}</label>
+                    </div>
+                </th>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>              
+
+            <tr>
+                <th>{{ form_label(form.group.street) }} / {{ form_label(form.group.flat) }}</th>
+                <td>
+                    {{ form_widget(form.group.street, { 'attr': {'class': 'street'}}) }} {{ form_widget(form.group.flat, { 'attr': {'class': 'flat'}}) }} (np. 13/47)
+                </td>
+                <td>
+                    {# {{ form_errors(form.group.street) }} 
+                    {{ form_errors(form.group.flat) }} #}
+                </td>
+            </tr>   
+
+            <tr>
+                <th>{{ form_label(form.group.city) }}</th>
+                <td>
+                    {{ form_widget(form.group.city) }}
+                </td>
+                <td>
+                    {# {{ form_errors(form.group.city) }} #}
+                </td>
+            </tr>   
+
+            <tr>
+                <th>{{ form_label(form.group.postcode) }}</th>
+                <td>
+                    {{ form_widget(form.group.postcode) }}
+                </td>
+                <td>
+                    {# {{ form_errors(form.group.postcode) }} #}
+                </td>
+            </tr>     
+
+            <tr>
+                <th>{{ form_label(form.group.nip) }}</th>
+                <td>
+                    {{ form_widget(form.group.nip) }}
+                </td>
+                <td>
+                    {# {{ form_errors(form.group.nip) }} #}
+                </td>
+            </tr>                   
+        </tbody>    
+        
+        <tbody>
+            
+            <tr>
+                <th>{{ form_label(form.captcha) }}*</th>
+                <td>
+                    {{ form_widget(form.captcha, { 'attr': {'class': 'validate[required]'}}) }}
+                </td>
+                <td>
+                    {# {{ form_errors(form.captcha) }} #}
+                </td>
+            </tr>             
+            
+        </tbody>
+
+    </table>
+
+
+    {{ form_widget(form.is_agree_processing, { 'attr': {'class': 'validate[required]'}}) }}
+    {{ form_label(form.is_agree_processing) }}    
+    <br /><br />
+    {{ form_widget(form.is_agree_regulations, { 'attr': {'class': 'validate[required]'}}) }}
+    {{ form_label(form.is_agree_regulations) }} 
+    <br /><br />
+    * {% trans %}Pola wymagane{% endtrans %}
+
+    <table class="register-table">
+
+        <tbody>
+
+            <tr>
+                <th>
+                    &nbsp;
+                </th>
+                <td>
+                    <div class="button-register">
+                        <span>
+                            <a onclick="$('form').submit();" class="button-redirect" href="javascript: void(0);">{% trans %}Zarejestruj się{% endtrans %}
+                            </a>
+                        </span>
+                    </div>                       
+                </td>
+                <td> 
+                    <div class="button-clean">
+                        <span>
+                            <a onclick="$('form')[0].reset();" class="button-redirect" href="javascript: void(0);">{% trans %}Wyczyść{% endtrans %}</a>
+                        </span>
+                    </div>  
+                </td>
+            </tr>  
+
+        </tbody>
+
+    </table> 
+
+    {{ form_rest(form) }}    
+
+</form>

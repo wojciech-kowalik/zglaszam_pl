@@ -1,0 +1,74 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+
+<div class="header-content">{% trans %}Menu{% endtrans %}</div>
+
+<a class="button-new modal-handler" data-href="{{ path('MenuBundle_new') }}" data-height="500" data-width="900" data-title="Menu" href="#" >
+    {% trans %}Dodaj element menu{% endtrans %}
+</a>
+
+<br /><br />
+
+<table id="list" data-width="180" data-height="80" data-title="Komunikat"></table> 
+<div id="pager"></div>
+
+<div class="header-content">{% trans %}Legenda{% endtrans %}</div>
+
+<span class="legend-elements">
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+    <span class="ui-button-icon-primary ui-icon ui-icon-pencil"></span> <span class="ui-button-text">Edytuj</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+    <span class="ui-button-icon-primary ui-icon ui-icon-close"></span> <span class="ui-button-text">Usuń</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+    <span class="ui-button-icon-primary ui-icon ui-icon-triangle-1-n"></span> <span class="ui-button-text">Przesunięcie elementu w górę</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+    <span class="ui-button-icon-primary ui-icon ui-icon-triangle-1-s"></span> <span class="ui-button-text">Przesunięcie elementu w dół</span>
+</a>
+    
+</span>    
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    var url = "{{ url('MenuBundle_list', {'_format' : 'json' }) }}";
+
+        var routingNames = {
+            edit: {name: 'MenuBundle_edit', height: 500, width: 900},
+            sort: {name: 'MenuBundle_sort', height: 120, width: 180}
+        };    
+    
+    {% if is_granted("ROLE_ADMIN_GODMODE") %}
+    routingNames.del = {name: 'MenuBundle_delete', height: 120, width: 180};
+    {% endif %}  
+  
+    var colNames = ['Id', 'Nazwa', 'Url', 'Data utworzenia', 'Aktywny', 'Akcje'];
+    var colModels = [ 
+        {name:'id',index:'id', width: 25,  search:true},
+        {name:'name',index:'name', search:true, sorttype:'text'},
+        {name:'url',index:'description', sortable: false, search:false},
+        {name:'createdAt',index:'createdAt', sortable: false, search:false},
+        {name:'isActive',index:'isActive', sortable: true, search:false, formatter: booleanFormater},
+        {name:'actions',index:'actions',sortable:false, search:false},
+    ];
+
+    jqGridInit(url, routingNames, colNames, colModels);
+    jqGridSortable(routingNames);
+
+    jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false, search:false});
+    jQuery("#list").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : true, defaultSearch:"eq"});
+
+
+</script>    
+
+{% endblock %}

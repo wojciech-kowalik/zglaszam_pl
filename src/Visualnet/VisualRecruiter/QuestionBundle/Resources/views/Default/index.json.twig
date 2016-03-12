@@ -1,0 +1,9 @@
+{"page": "{{config.page}}", "total": {{config.total}}, "records": "{{config.records}}",
+"rows": [
+{% for object in config.data -%}
+{"id": "{{ object.id }}",
+"cell":[
+"{{ object.id }}","{{ object.name }}","{{ object.user.name }} {{ object.user.surname }}","{{ object.createdAt|date("d/m/Y") }}"]}
+{% if loop.last == false %},{% endif %}
+{%- endfor %}
+]}

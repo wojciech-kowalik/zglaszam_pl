@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" namespace="Visualnet\VisualRecruiter\QuestionBundle\Model" tablePrefix="visual_">
+    
+<table name="question" phpName="Question" idMethod="native">    
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>      
+    <behavior name="timestampable" />  
+    <behavior name="sortable" />
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="user_id" type="INTEGER" required="true" />
+    <column name="group_id" type="INTEGER" required="true" />
+    <column name="name" phpName="Name" type="VARCHAR" size="255" required="false"/>
+    <column name="label" phpName="Label" type="VARCHAR" size="255" required="false"/>
+    <column name="type" phpName="Type" type="ENUM" valueSet="text, textarea, checkbox, radio, header, dropdown" required="false"/>
+    <column name="answers" phpName="Answers" type="LONGVARCHAR" required="false"/>
+    <column name="limit" phpName="Limit" type="INTEGER" size="4" required="false"/>
+    <column name="validation_rule_predefined" phpName="ValidationRulePredefined" type="VARCHAR" size="80" required="false"/>
+    <column name="validation_rule_optional" phpName="ValidationRuleOptional" type="VARCHAR" size="255" required="false"/>
+    <column name="is_predefined" phpName="IsPredefined" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <index>
+        <index-column name="type" />
+        <index-column name="is_predefined" />
+    </index>  
+    <foreign-key foreignTable="user" name="fk_question_1">
+      <reference local="user_id" foreign="id" />
+    </foreign-key>    
+    <foreign-key foreignTable="group" name="fk_question_2">
+      <reference local="group_id" foreign="id" />
+    </foreign-key>        
+</table>    
+
+</database>  
+
+

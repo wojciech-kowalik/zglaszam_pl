@@ -1,0 +1,7 @@
+
+<select class="change recruitment-select">
+<option value="">{% trans %}wybierz{% endtrans %}:
+{% for recruitment in recruitments %}
+    <option data-href="{{ url('AdminBundle_recruitment', {'id' : recruitment.id }) }}" value="{{ recruitment.id }}">{{ recruitment.name }}</option>
+{% endfor %}
+</select>

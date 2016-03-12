@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" namespace="Visualnet\MenuBundle\Model" tablePrefix="visual_">
+  <table name="menu" phpName="Menu" idMethod="native">
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>  
+    <behavior name="i18n">
+        <parameter name="i18n_columns" value="name, slug, content" />
+        <parameter name="locale_alias" value="culture" />
+    </behavior>      
+    <behavior name="timestampable" />    
+    <behavior name="sortable" />
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="is_active" phpName="IsActive" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+    <column name="url" phpName="Url" type="VARCHAR" size="255" required="false"/>
+    <index name="is_active_index">
+      <index-column name="is_active"/>
+    </index>
+  </table>
+  <table name="menu_i18n" phpName="MenuI18n" idMethod="native" isCrossRef="true">
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+      <parameter name="Charset" value="utf8"/>
+    </vendor>
+    <behavior name="timestampable" />    
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="locale" phpName="Locale" type="VARCHAR" size="5" required="true" primaryKey="true" />
+    <column name="name" phpName="Name" type="VARCHAR" size="45" required="false"/>
+    <column name="slug" phpName="Slug" type="VARCHAR" size="45" required="false"/>
+    <column name="content" phpName="Content" type="LONGVARCHAR" required="false"/>
+    <foreign-key foreignTable="menu" name="fk_menu_id" onDelete="CASCADE">
+      <reference local="id" foreign="id"/>
+    </foreign-key>
+  </table>
+</database>

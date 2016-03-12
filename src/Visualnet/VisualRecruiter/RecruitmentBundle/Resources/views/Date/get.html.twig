@@ -1,0 +1,7 @@
+<div class="option-element">{% trans %}Filtruj po terminie{% endtrans %}:</div><br />
+<select class="change recruitment-select">
+<option value="">{% trans %}wybierz{% endtrans %}:
+{% for date in dates %}
+    <option data-href="{{ url('RecruitmentBundle_users_date', {'id' : date.id }) }}.html" value="{{ date.id }}" {% if recruitmentDateId == date.id %}selected{% endif %}>{{ date.eventDateFrom|date("d/m/Y") }} - {{ date.eventDateTo|date("d/m/Y") }}</option>
+{% endfor %}
+</select>

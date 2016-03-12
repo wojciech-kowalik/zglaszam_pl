@@ -1,0 +1,60 @@
+<img src="{{ asset('/images/logo-mail.png') }}" alt="" />
+<div class="bold">{% trans %}Witamy w systemie{% endtrans %} !!!</div>
+<br />
+{% trans %}Poniżej znajdują się linki do prezentacji dzięki którym mogą Państwo w łatwy sposób poznać funkcje systemu{% endtrans %}
+<br /><br />
+
+<table style="border-collapse: collapse;">
+    
+    <tr>
+        <td>
+            <img src="{{ asset('/images/circle-1.png') }}" alt="" />             
+        </td>
+        <td>
+            &nbsp;<a class="button-guide" data-href="{{ url('AdminBundle_guide_element', {'id': '1' }) }}" data-height="660" data-width="935" data-title="Zakładanie formularza" href="#" title="Zakładanie formularza"  href="#">{% trans %}Zakładanie formularza{% endtrans %}</a>
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <img src="{{ asset('/images/circle-2.png') }}" alt="" />             
+        </td>
+        <td>
+            &nbsp;<a class="button-guide" data-href="{{ url('AdminBundle_guide_element', {'id': '2' }) }}" data-height="660" data-width="935" data-title="Tworzenie rekrutacji" href="#" title="Tworzenie rekrutacji"  href="#">{% trans %}Tworzenie rekrutacji{% endtrans %}</a>
+        </td>
+    </tr>   
+    
+    <tr>
+        <td>
+            <img src="{{ asset('/images/circle-3.png') }}" alt="" />             
+        </td>
+        <td>
+            &nbsp;<a class="button-guide" data-href="{{ url('AdminBundle_guide_element', {'id': '3' }) }}" data-height="660" data-width="935" data-title="Export danych uczestników" href="#" title="Tworzenie rekrutacji"  href="#">{% trans %}Export danych uczestników{% endtrans %}
+        </td>
+    </tr>    
+    
+</table>
+
+<br />
+
+<div style="float:right;">
+<a data-href="{{ url('AdminBundle_guide_thanks') }}" class="{% if app.user.getIsFirstTime %}button-thanks{% else %}button-close{% endif %} ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false">
+    <span class="ui-button-icon-primary ui-icon ui-icon-close"></span>
+    <span class="ui-button-text">
+        {% if app.user.getIsFirstTime %}{% trans %}Nie, dziękuje i nie pokazuj okna na starcie{% endtrans %}{% else %}{% trans %}Zamknij{% endtrans %}{% endif %}
+    </span>
+</a>    
+</div>
+
+<script type="text/javascript">
+    
+    $(".button-guide").on("click", function(){
+
+        subModal = $("<div></div>");
+        modal.generate($(this), false, true, false, subModal);
+
+    });
+    
+</script>
+
+<script src="{{ asset('/js/modal.js') }}" type="text/javascript"></script>

@@ -1,0 +1,75 @@
+<ul class="left-menu">
+    
+    {% set classAdmin = "" %}
+    {% set classUserAdminGroup = "" %}
+    
+    {% if not is_granted("ROLE_ADMIN") %}
+        {% set classAdmin = "restricted-area" %}
+    {% endif %}
+    
+    {% if not is_granted("ROLE_USER_ADMINGROUP") and not is_granted("ROLE_ADMIN") %}
+        {% set classUserAdminGroup = "restricted-area" %}
+    {% endif %}  
+    
+    <li class="menus {{ classAdmin }}">
+        <div class="element-container">{% trans %}Menu strony głównej{% endtrans %}</div>
+        <ul class="left-submenu">
+            <li class="group-element-container menu {{ classAdmin }}"><div class="element-container"><a class="element" href="{% if classAdmin %}{% else %}{{ path('MenuBundle_list') }}.html{% endif %}">{% trans %}Lista elementów{% endtrans %}</a></div></li>
+        </ul>
+    </li>
+    
+    <li class="roles-groups {{ classUserAdminGroup }}">
+        <div class="element-container">{% trans %}Role / Grupy{% endtrans %}</div>
+        <ul class="left-submenu">
+            <li class="group-element-container role {{ classAdmin }}"><div class="element-container"><a class="element" href="{% if classAdmin %}{% else %}{{ path('UserBundle_role_list') }}.html{% endif %}">{% trans %}Lista ról{% endtrans %}</a></div></li>
+            <li class="group-element-container group {{ classUserAdminGroup }}"><div class="element-container"><a class="element" href="{% if classUserAdminGroup %}{% else %}{{ path('UserBundle_group_list') }}.html{% endif %}">{% trans %}Lista grup{% endtrans %}</a></div></li>
+        </ul>
+    </li>   
+   
+    <li class="group-element-container users {{ classUserAdminGroup }}">
+        <div class="element-container">{% trans %}Użytkownicy{% endtrans %}</div>
+        <ul class="left-submenu">
+            <li class="group-element-container user {{ classUserAdminGroup }}"><div class="element-container"><a class="element" href="{% if classUserAdminGroup %}{% else %}{{ path('UserBundle_user_list') }}.html{% endif %}">{% trans %}Lista użytkowników{% endtrans %}</a></div></li>
+        </ul>
+    </li>   
+    
+    <li class="forms">
+        <div class="element-container">{% trans %}Formularze{% endtrans %}</div>
+        <ul class="group-element-container left-submenu">
+            <li class="group-element-container forms"><div class="element-container"><a class="element" href="{{ path('QuestionBundle_list') }}.html">{% trans %}Zarządzaj pytaniami{% endtrans %}</a></div></li>
+            <li class="group-element-container forms"><div class="element-container"><a class="element" href="{{ path('FormBundle_list') }}.html">{% trans %}Lista formularzy{% endtrans %}</a></div></li>
+        </ul>
+    </li>
+    
+    <li class="recruitments">
+        <div class="element-container">{% trans %}Rejestracje{% endtrans %}</div>
+        <ul class="left-submenu">
+            <li class="group-element-container forms"><div class="element-container"><a class="element" href="{{ path('RecruitmentBundle_list') }}.html">{% trans %}Zarządzaj rejestracjami{% endtrans %}</a></div></li>
+        </ul>
+      
+        <ul class="left-submenu">
+            <li>
+                <div class="element-container">
+                    <a class="element">{% trans %}Rejestracja{% endtrans %}: {% render "RecruitmentBundle:Default:get" %}</a>
+                </div>
+            </li>  
+        </ul>
+                 
+        <ul class="left-submenu {% if not app.session.get("recruitment") %}no-active{% endif %}">
+            <li {% if not app.session.get("recruitment") %}class="group-element-container forms title" title="{% trans %}Proszę wybrać rejestrację{% endtrans %}"{% else %}class="group-element-container forms"{% endif %}>
+                <div class="element-container"><a class="element" href="{{ path('RecruitmentBundle_users') }}.html">{% trans %}Lista uczestników{% endtrans %}</a>
+                </div>
+            </li>
+        </ul>
+       
+<!--        <ul class="left-submenu {% if not app.session.get("recruitment") %}no-active{% endif %}">
+            <li {% if not app.session.get("recruitment") %}class="group-element-container forms title" title="{% trans %}Proszę wybrać rejestrację{% endtrans %}"{% else %}class="group-element-container forms"{% endif %}>
+                <div class="element-container"><a class="element" href="{{ path('StatisticsBundle_index') }}.html">{% trans %}Statystyki{% endtrans %}</a>
+                </div>
+            </li>
+        </ul>          -->
+
+            
+    </li>     
+    
+</ul>

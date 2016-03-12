@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl"> <!--<![endif]-->
+
+    <!--
+    
+    Recruitment system (zglaszam.pl) written by visualnet.pl
+    2012 All rights reserved
+    
+    -->    
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="system rejestracyjny zglaszam.pl" />
+        <title>{% block title %}zglaszam.pl{% endblock %}</title>
+        <link rel="canonical" href="http://www.zglaszam.pl/admin/"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="/css/admin.compressed.css.php" />
+        <link rel="stylesheet" type="text/css" media="screen" href="/css/custom-theme/jquery-ui-1.8.20.custom.css" />
+        {% block stylesheets %}{% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+
+        <!-- 
+        @wk unfortunately Modernizr has to be on top :/ others scripts may be on bottom
+        I hope that IE will once maintain standards ... 
+        -->
+        <!-- Cloudflare CDN's -->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.5.3/modernizr.min.js" type="text/javascript" charset="utf-8"></script>        
+
+    </head>
+    <body id="body">
+
+        <div class="bar-top">
+
+            <div class="header-top"></div>
+
+            <!-- TOP MENU -->
+
+            <div class="nav-top">
+
+                {% if app.user and is_granted("IS_AUTHENTICATED_FULLY") %}
+                {% include "AdminBundle:Menu:top.html.twig" %}
+                {% endif %}
+
+                <div class="top-countdown">
+
+                    <!--
+                    if app.user
+                    <span class="logged-text">{% trans %}wybierz język{% endtrans %}:</span> 
+                    {# langs is global twig variable #}
+                    {% for lang in langs %}
+                    <a {% if app.session.locale == lang %}class="selected-language"{% endif %} href="{{ url('AdminBundle_language', {'language' : lang }) }}">{{ lang }}</a> 
+                    {% endfor %}
+                    -->
+                    {% if app.user and is_granted("IS_AUTHENTICATED_FULLY") %}                    
+                    <span class="logout-description">{% trans %}automatyczne wylogowanie{% endtrans %}:</span> <span id="timer">00m:00s</span>
+                    {% endif %}
+                                        
+                </div>                
+
+            </div>
+
+            {% if app.user and is_granted("IS_AUTHENTICATED_FULLY") %}
+
+            {% set recruitmentSession = app.session.get("recruitment") %}
+
+            <div id="floating-box">
+
+                <p>
+                    {% if recruitmentSession %}
+
+                    <span class="icon-container">
+                        <span class="icon-name">wybrana rejestracja:</span>
+                        <span class="ui-icon ui-state-highlight ui-icon-check border-icon">&nbsp;</span>
+                    </span>  
+                    <br />
+                    <span class="header-choose">{{ recruitmentSession["Name"] }}</span><br />                            
+
+                    <span class="break"></span>
+
+                    {% endif %}
+
+                    <span class="icon-container">
+                        <span class="icon-name">link grupy z rejestracjami:</span>
+                        <span class="ui-icon ui-state-highlight ui-icon-person border-icon">&nbsp;</span>
+                    </span>  
+                    
+                    <br />
+                    
+                    <span class="header-choose">
+                        <a target="_blank" href="{{ path('FrontendBundle_recruitment_group', { 'id': app.user.getGroup.getId }) }}">
+                            {{ path('FrontendBundle_recruitment_group', { 'id': app.user.getGroup.getId  }) }}
+                        </a>
+                    </span>
+                    
+                    <br />
+
+                </p>                            
+
+            </div>
+
+            {% endif %}        
+
+            <!-- / TOP MENU -->
+
+        </div>
+
+        <div id="container">
+
+            {% if app.user %}
+
+            <!-- LEFT MENU -->
+
+            <div class="left-menu">
+
+                {% if app.user and is_granted("IS_AUTHENTICATED_FULLY") %}
+                {% include "AdminBundle:Menu:left.html.twig" %}
+                {% endif %}   
+
+
+            </div>
+
+            <!-- / LEFT MENU -->
+
+            {% endif %}
+
+            <!-- CONTENT -->
+
+            <div class="content">
+
+                {% if app.session.flash('error') %}
+
+                <div class="ui-widget">
+                    <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+                        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+                            <strong>Alert:</strong> {{ app.session.flash('error') }}</p>
+                    </div>
+                </div>
+
+                {% endif %}
+
+                {% if app.session.flash('success') %}
+
+                <div class="ui-widget">
+                    <div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+                        <p><span class="ui-icon ui-icon-circle-check" style="float: left; margin-right: .3em;"></span>
+                            {{ app.session.flash('success') }}</p>
+                    </div>
+                </div>
+
+                {% endif %}                
+
+                {% block body %}{% endblock %}
+                
+            </div>
+            
+            <!-- FOOTER -->
+
+            <div class="footer">
+                version: {{ vr_version }}_{{ app.session.locale }} &copy; zglaszam.pl {{ "now"|date("Y") }}. Wszelkie prawa zastrzeżone
+                <br />
+
+                <span class="logged-text">
+                    ip:
+                </span> 
+                <span class="selected-language">{{ app.request.getClientIp }}</span>,   
+                <span class="logged-text">
+                    {% trans %}język{% endtrans %}:
+                </span>
+                <span class="selected-language">{{ app.session.locale }}</span>                    
+                    
+            </div>
+
+            <!-- / FOOTER -->            
+
+            <!-- / CONTENT -->
+
+
+        </div>
+
+        {% include "::loader.html.twig" %}        
+
+        <div class="dialog"></div>
+        <div class="confirm"></div>
+        
+        <noscript> 
+
+            <div class="nojs-dialog-background">&nbsp;</div>
+
+            <div class="nojs-dialog-root">
+
+                <div class="nojs-dialog">
+                    <p>{% trans %}Musisz włączyć obsługę JavaScript{% endtrans %}</p>
+                </div>
+            </div>	
+
+        </noscript>           
+
+        <!-- TEMPORARY IS FIRST TIME ON SITE ELEMENT -->
+        <span id="is-first-time hidden">{% if app.user.getIsFirstTime is defined %}{{ app.user.getIsFirstTime }}{% endif %}</span>
+
+        {% include '::baseadminjs.html.twig' %}
+
+        {% block javascripts %}{% endblock %}
+
+        {% if app.user.getIsFirstTime is defined %}
+        {% if app.user.getIsFirstTime %}
+        <!-- SHOW GUIDE -->
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+
+                var element = $("<div></div>");
+
+                element.data("height", 350);
+                element.data("width", 340);
+                element.data("href", "{{ url('AdminBundle_guide') }}");
+                element.data("title", "Przewodnik");
+
+                modal.generate(element, false, true);
+
+            });
+
+        </script>
+        {% endif %}
+        {% endif %}
+
+    </body>
+</html>

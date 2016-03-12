@@ -1,0 +1,9 @@
+{"page": "{{config.page}}", "total": {{config.total}}, "records": "{{config.records}}",
+"rows": [
+{% for object in config.data -%}
+{"id": "{{ object.id }}",
+"cell":[
+"{{ object.id }}", "{{ object.isActive }}", "{% if object.eventDateFrom is not null %}{{ object.eventDateFrom|date("d/m/Y") }}{% endif %}", "{% if object.eventDateTo is not null %}{{ object.eventDateTo|date("d/m/Y") }}{% endif %}", "{{ object.createdAt|date("d/m/Y") }}"]}
+{% if loop.last == false %},{% endif %}
+{%- endfor %}
+]}

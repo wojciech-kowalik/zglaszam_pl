@@ -1,0 +1,21 @@
+<section class="box width-login-content height-auto-content">
+
+    <header class="header-index">Panel użytkownika</header>
+
+    <article>
+        
+        {{ app.user.getName }} {{ app.user.getSurname }} ({{ app.user.username }})
+        <br /><br />
+        {% if is_granted("ROLE_GROUPADMIN") %}
+            Administrator grupy<br />
+            <a href="">Dodaj użytkownika</a><br />
+            <a href="">Dodaj formularz</a>
+        {% endif %}
+        
+        <br /><br />
+        
+    </article>
+
+</section>
+
+

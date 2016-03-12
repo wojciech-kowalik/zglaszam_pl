@@ -1,0 +1,183 @@
+
+<form id="form-validate" novalidate="novalidate" action="{% if object.isNew %}{{ path('QuestionBundle_create') }}{% else %}{{ url('QuestionBundle_update', {'id' : object.id }) }}{% endif %}"  method="post" {{ form_enctype(form) }}>
+
+    {% if not object.isNew %}
+      <input type="hidden" name="sf_method" value="PUT" />
+    {% endif %}
+
+    <!--  global errors container  -->
+    <span id="global-errors" class="hidden error">example</span>  
+
+    <div class="tabs">
+        <ul>
+            <li><a href="#tabs-1">Ustawienia</a></li>
+            <li><a href="#tabs-2">Walidacja</a></li>
+        </ul>
+
+        <div id="tabs-1">
+
+            <table id="manipulate-table">
+
+                <tbody>
+
+                    <tr>
+                        <th>{{ form_label(form.name) }}:</th>
+                        <td>{{ form_widget(form.name) }}</td>
+                        <td>{{ form_errors(form.name) }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>{{ form_label(form.type) }}:</th>
+                        <td>{{ form_widget(form.type) }}</td>
+                        <td>{{ form_errors(form.type) }}</td>
+                    </tr>            
+
+                    <tr id="limit" class="question-blind">
+                        <th>{{ form_label(form.limit) }}:</th>
+                        <td>{{ form_widget(form.limit, { 'attr': {'disabled': 'true'} }) }}</td>
+                        <td>{{ form_errors(form.limit) }}</td>
+                    </tr>               
+
+                    <tr>
+                        <th>{{ form_label(form.label) }}:</th>
+                        <td>{{ form_widget(form.label) }}</td>
+                        <td>{{ form_errors(form.label) }}</td>
+                    </tr>  
+
+                    <tr id="answers" class="question-blind">
+                        <th>{{ form_label(form.answers) }}:</th>
+                        <td>{{ form_widget(form.answers, { 'attr': {'disabled': 'true'} }) }}</td>
+                        <td>{{ form_errors(form.answers) }}</td>
+                    </tr>       
+
+                    <tr>
+                        <th>&nbsp;</th>
+                        <td colspan="2">
+
+                            <div class="info-box">
+                                <div class="ui-icon ui-icon-info left"></div>
+                                {% trans %}odpowiedzi prosimy oddzielać średnikami <br />(np. odpowiedz1;odpowiedz2){% endtrans %}
+                            </div>
+
+                        </td>
+                    </tr>   
+
+                    <tr>
+                        <td colspan="3">&nbsp;</td>
+                    </tr>                           
+
+                    <tr>
+                        <th>&nbsp</th>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>            
+
+                </tbody>
+
+            </table>  
+
+        </div>
+
+        <div id="tabs-2">
+            
+            <table id="manipulate-table">
+
+                <tbody>            
+
+                    <tr id="validation_rule_select" class="question-blind">
+                        <th>{{ form_label(form.validation_rule_predefined) }}:</th>
+                        
+                        <td>{{ form_widget(form.validation_rule_predefined, { 'attr': {'disabled': 'true'} }) }}</td>
+                        
+   
+                        
+                        <td>{{ form_errors(form.validation_rule_predefined) }}</td>
+                    </tr>   
+                    
+                    <tr>
+                        <th>&nbsp;</th>
+                        <td colspan="2">
+
+                            <div class="info-box">
+                                <div class="ui-icon ui-icon-info left"></div>
+                                domyślne walidacje dla pola:<br /><br />
+                                <b>email</b> - adres email<br />
+                                <b>nip</b> - numer NIP<br />
+                                <b>adres www</b> - adres strony internetowej<br />
+                                <b>telefon</b> - numer telefonu stacjonarnego<br />
+                                <b>telefon komórkowy</b> - numer telefonu komórkowego<br />
+                                <b>kod pocztowy</b> - kod pocztowy w formacie xx-xxx<br />
+                                <b>wartość tekstowa</b> - wpisywana wartość musi być tekstem<br />
+                                <b>wartość liczbowa</b> - wpisywana wartość musi być cyfrą lub liczbą<br />
+                            </div>
+
+                        </td>
+                    </tr>                      
+
+                    <tr id="validation_rule" class="question-blind">
+                        <th>{{ form_label(form.validation_rule_optional) }}:</th>
+                        <td>{{ form_widget(form.validation_rule_optional, { 'attr': {'disabled': 'true'} }) }}</td>
+                        <td>{{ form_errors(form.validation_rule_optional) }}</td>
+                    </tr>  
+
+                    <tr>
+                        <th>&nbsp;</th>
+                        <td colspan="2">
+
+                            <div class="info-box">
+                                <div class="ui-icon ui-icon-info left"></div>
+                                wyrażenia w formacie np. ^\d{2}-\d{3}$ (przykładowe wyrażenie sprawdzające kod pocztowy), 
+                                więcej o wyrażeniach <a target="_blank" style="font-weight: bold; text-decoration: underline;" href="http://www.webreklama.pl/informator/programowanie/Wyra%C5%BCenia%20regularne%20typu%20PERL.html">link</a>
+                            </div>
+
+                        </td>
+                    </tr>      
+                    
+                </tbody>
+                
+            </table>
+
+        </div>
+
+
+    </div>    
+
+    <br /><br />
+
+    <a data-width="200" data-height="100" class="button-save ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false">
+        <span class="ui-button-icon-primary ui-icon {% if not object.isNew %}ui-icon-pencil{% else %}ui-icon-circle-plus{% endif %}"></span>
+        <span class="ui-button-text">
+            {% if not object.isNew %}
+            {% trans %}Zapisz{% endtrans %}
+            {% else %}
+            {% trans %}Dodaj{% endtrans %}
+            {% endif %}
+        </span>
+    </a> 
+
+    <a class="button-close ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false">
+        <span class="ui-button-icon-primary ui-icon ui-icon-close"></span>
+        <span class="ui-button-text">
+            {% trans %}Zamknij{% endtrans %}
+        </span>
+    </a>           
+
+
+    {{ form_widget(form._token) }}
+
+</form>
+
+
+<script type="text/javascript">
+    
+    /* ------------------------------------------- */
+    /* enable tabs */
+    /* ------------------------------------------- */    
+
+    $(".tabs").tabs();     
+    
+</script>
+
+<script src="{{ asset('/js/modal.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/question.js') }}" type="text/javascript"></script>
+
+

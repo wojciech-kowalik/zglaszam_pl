@@ -1,0 +1,32 @@
+parameters:
+#    visualnet_session.example.class: Visualnet\SessionBundle\Example
+
+services:
+    role:
+      class: Visualnet\VisualRecruiter\UserBundle\Service\Role
+      arguments: [@service_container]
+      
+    group:
+      class: Visualnet\VisualRecruiter\UserBundle\Service\Group
+      arguments: [@service_container]
+      
+    user:
+      class: Visualnet\VisualRecruiter\UserBundle\Service\User
+      arguments: [@service_container]      
+      
+    twig.extension.role:
+      class: Visualnet\VisualRecruiter\UserBundle\Extension\Role
+      arguments: [@role]
+      tags:
+        - { name: twig.extension } 
+      
+    twig.extension.group:
+      class: Visualnet\VisualRecruiter\UserBundle\Extension\Group
+      arguments: [@group]
+      tags:
+        - { name: twig.extension }         
+        
+#    kernel.listener.menu:
+#      class: Visualnet\MenuBundle\Listener\Menu
+#      tags:
+#          - { name: kernel.listener }   

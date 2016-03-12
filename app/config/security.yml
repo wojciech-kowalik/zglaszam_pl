@@ -1,0 +1,47 @@
+security:
+        
+    encoders:
+        Visualnet\UserBundle\Lib\UserProxy: sha1
+        
+    providers:
+        custom_provider:
+            id: visualnet.user.provider
+
+    firewalls:
+      remind:
+          pattern:  /admin/remind/password.html$
+          security: false      
+      login:
+          pattern:  /admin/login.html$
+          security: false      
+      admin:
+            pattern:    ^/admin
+            form_login:
+                check_path: /admin/authentication.html
+                login_path: /login.html
+                success_handler: visualnet.security.success
+                failure_handler: visualnet.security.failure
+                use_referer: true
+            logout:
+                path:   /admin/logout.html
+                target: /admin/
+                delete_cookies: ~                
+                
+      frontend:
+            pattern:    ^/app
+            anonymous: true
+            form_login:
+                check_path: /app/authentication.html
+                login_path: /login.html
+                success_handler: visualnet.security.success
+                failure_handler: visualnet.security.failure
+            logout:
+                path:   /app/logout.html
+                target: /app/
+                delete_cookies: ~
+                
+    access_control:
+        - { path: ^/admin/{_locale}/users.html, roles: [ROLE_ADMIN, ROLE_USER_ADMINGROUP, ROLE_USER_GROUP]}
+        - { path: ^/admin/.*, roles: [ROLE_ADMIN, ROLE_USER_ADMINGROUP, ROLE_USER_GROUP]}         
+        - { path: ^/app/user/.*, roles: ROLE_USER_FRONTEND} 
+        - { path: /.*, roles: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -1,0 +1,94 @@
+RecruitmentBundle_list:
+    pattern:  /admin/{_locale}/recruitments.{_format}
+    defaults: { _controller: RecruitmentBundle:Default:list, _format: html, _locale: pl}     
+    requirements:
+        _format: html|json
+        
+RecruitmentBundle_new:
+    pattern:  /admin/{_locale}/new/recruitment.html
+    defaults: { _controller: RecruitmentBundle:Default:new, _locale: pl }    
+    
+RecruitmentBundle_create:
+    pattern:  /admin/{_locale}/create/recruitment.html
+    defaults: { _controller: RecruitmentBundle:Default:create, _locale: pl }   
+    
+RecruitmentBundle_edit:
+    pattern:  /admin/{_locale}/edit/{id}/recruitment.html
+    defaults: { _controller: RecruitmentBundle:Default:edit, id: 0, _locale: pl }  
+    options:
+      expose: true      
+    
+RecruitmentBundle_update:
+    pattern:  /admin/{_locale}/update/{id}/recruitment.html
+    defaults: { _controller: RecruitmentBundle:Default:update, id: 0, _locale: pl }    
+    
+RecruitmentBundle_delete:
+    pattern:  /admin/{_locale}/delete/{id}/recruitment.html
+    defaults: { _controller: RecruitmentBundle:Default:delete, _locale: pl }  
+    options:
+      expose: true 
+
+RecruitmentBundle_dates:
+    pattern:  /admin/{_locale}/dates/{id}/recruitment.{_format}
+    defaults: { _controller: RecruitmentBundle:RecruitmentDate:list, _format: html, _locale: pl }  
+    requirements:
+        id:  \d+ 
+    options:
+      expose: true
+      
+RecruitmentBundle_date_new:
+    pattern:  /admin/{_locale}/new/date/{mainID}/recruitment.html
+    defaults: { _controller: RecruitmentBundle:RecruitmentDate:new, _locale: pl }      
+      
+RecruitmentBundle_date_create:
+    pattern:  /admin/{_locale}/create/date/{mainID}/recruitment.html
+    defaults: { _controller: RecruitmentBundle:RecruitmentDate:create, _locale: pl }      
+      
+RecruitmentBundle_date_edit:
+    pattern:  /admin/{_locale}/edit/{id}/date/{mainID}/recruitment.html
+    defaults: { _controller: RecruitmentBundle:RecruitmentDate:edit, _locale: pl }      
+    options:
+      expose: true   
+      
+RecruitmentBundle_date_update:
+    pattern:  /admin/{_locale}/update/{id}/date/{mainID}/recruitment.html
+    defaults: { _controller: RecruitmentBundle:RecruitmentDate:update, _locale: pl }           
+      
+RecruitmentBundle_date_delete:
+    pattern:  /admin/{_locale}/delete/{id}/date/{mainID}/recruitment.html
+    defaults: { _controller: RecruitmentBundle:RecruitmentDate:delete, _locale: pl }        
+    options:
+      expose: true  
+          
+RecruitmentBundle_users:
+    pattern:  /admin/{_locale}/users/recruitment.{_format}
+    defaults: { _controller: RecruitmentBundle:RecruitmentUser:list, _format: html, _locale: pl }            
+      
+RecruitmentBundle_users_date:
+    pattern:  /admin/{_locale}/users/{id}/date/recruitment.{_format}
+    defaults: { _controller: RecruitmentBundle:RecruitmentUser:list, _format: html, _locale: pl }     
+    
+RecruitmentBundle_user_show:
+    pattern:  /admin/{_locale}/{id}/user/show/recruitment.{_format}
+    defaults: { _controller: RecruitmentBundle:RecruitmentUser:show, _format: html, _locale: pl }      
+    options:
+      expose: true      
+      
+RecruitmentBundle_user_delete:
+    pattern:  /admin/{_locale}/delete/{id}/user/recruitment.html
+    defaults: { _controller: RecruitmentBundle:RecruitmentUser:delete, _locale: pl }        
+    options:
+      expose: true   
+      
+RecruitmentBundle_users_qualify:
+    pattern:  /admin/{_locale}/users/qualify/recruitment.html
+    defaults: { _controller: RecruitmentBundle:RecruitmentUser:qualify, _locale: pl }        
+    options:
+      expose: true    
+      
+RecruitmentBundle_users_export:
+    pattern:  /admin/{_locale}/users/export/{type}/{from}/recruitment.html
+    defaults: { _controller: RecruitmentBundle:RecruitmentUser:export, _locale: pl, type: csv, from: 0 }   
+    requirements:
+      type:  csv|xls|xlsx|xml|json
+      

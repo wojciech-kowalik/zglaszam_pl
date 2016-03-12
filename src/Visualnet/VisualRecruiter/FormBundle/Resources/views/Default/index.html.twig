@@ -1,0 +1,74 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+
+<div class="header-content">{% trans %}Formularze{% endtrans %}</div>
+
+<a class="button-new modal-handler" data-href="{{ path('FormBundle_new') }}" data-height="140" data-width="350" data-title="Formularz" href="#" >
+    {% trans %}Dodaj formularz{% endtrans %}
+</a>
+
+<br /><br />
+
+<table id="list" data-width="180" data-height="80" data-title="Komunikat"></table> 
+<div id="pager"></div>
+
+<div class="header-content">{% trans %}Legenda{% endtrans %}</div>
+
+<span class="legend-elements">
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-pencil"></span> <span class="ui-button-text">Edytuj</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-close"></span> <span class="ui-button-text">Usuń</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-comment"></span> <span class="ui-button-text">Pytania w formularzu</span>
+</a>
+    
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-contact"></span> <span class="ui-button-text">Podgląd formularza</span>
+</a>
+    
+</span>   
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    var url = "{{ url('FormBundle_list', {'_format' : 'json' }) }}";
+    
+    var routingNames = {
+        edit: {name: 'FormBundle_edit', height: 140, width: 350, title: 'Edycja'}, 
+        question: {name: 'FormBundle_questions', height: 470, width: 600},
+        preview: {name: 'FormBundle_preview', height: 500, width: 550, title: 'Podgląd formularza'} 
+    }
+    
+    {% if is_granted("ROLE_ADMIN_GODMODE") or is_granted("ROLE_USER_ADMINGROUP") %}
+        routingNames.del = {name: 'FormBundle_delete', height: 120, width: 180};
+    {% endif %}  
+  
+    var colNames = ['Id', 'Nazwa', 'Stworzone przez', 'Aktywny', 'Data utworzenia', 'Akcje'];
+    var colModels = [ 
+        {name:'id',index:'id', width: 25, search:true},
+        {name:'name',index:'name', search:true, sorttype:'text'},
+        {name:'user',index:'user', search:false, sortable:false},
+        {name:'isActive',index:'isActive',  search:false, sortable:true, formatter: booleanFormater},
+        {name:'createdAt',index:'createdAt',  sortable: true, search:false},
+        {name:'actions',index:'actions', sortable:false, search:false},
+    ];
+
+    jqGridInit(url, routingNames, colNames, colModels);
+
+    jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false, search:false});
+    jQuery("#list").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : true, defaultSearch:"eq"});
+
+
+</script>    
+
+{% endblock %}

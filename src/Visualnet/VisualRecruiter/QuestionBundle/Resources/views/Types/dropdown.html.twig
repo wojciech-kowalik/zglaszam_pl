@@ -1,0 +1,44 @@
+<tr>
+    
+    <th>
+        <div style="float: left;">
+            {{ object.question.name }}: {% if object.isRequired %}*{% endif %}
+        </div>
+        
+        {% if object.question.label %}
+        
+        <div style="float: right;">
+            <span title="{{ object.question.label }}" class="middle title ui-icon ui-icon-info left"></span>
+        </div>
+        
+        {% endif %}
+        
+    </th>
+    <td>
+        {% if object.question.answersArray %}
+        
+            <select id="data-{{ object.question.id }}" name="data[{{ object.question.id }}]">
+                <option value="">{% trans %}wybierz{% endtrans %}:</option>
+            {% for answer in object.question.answersArray %}
+            
+                <option value="{{ answer }}">{{ answer }}</option>
+            
+            {% endfor %} 
+            
+            </select>
+            
+        {% else %}
+        
+            
+            <input class="recruitment-register-input" type="text" id="data-{{ object.question.id }}" name="data[{{ object.question.id }}]" />   
+            
+        {% endif %}
+        
+        <div id="error-data-{{ object.question.id }}">&nbsp;</div>   
+        <input type="hidden" name="hidden-data[{{ object.question.id }}]" value="{{ object.question.data }}" />
+         
+    </td>
+
+    
+</tr>
+

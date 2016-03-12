@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="pl" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>wybierz język</source>
+                <target>wählen sie eine sprache</target>
+            </trans-unit>    
+            <trans-unit id="2">
+                <source>język</source>
+                <target>sprache</target>
+            </trans-unit>         
+            <trans-unit id="3">
+                <source>wyloguj</source>
+                <target>ausloggen</target>
+            </trans-unit>       
+            <trans-unit id="4">
+                <source>pomoc</source>
+                <target>hilfe</target>
+            </trans-unit>   
+            <trans-unit id="5">
+                <source>konto</source>
+                <target>konto</target>
+            </trans-unit>      
+            <trans-unit id="6">
+                <source>jesteś zalogowany jako</source>
+                <target>sie sind angemeldet als</target>
+            </trans-unit>     
+            <trans-unit id="7">
+                <source>system rekrutacyjny</source>
+                <target>einstellungssystem</target>
+            </trans-unit>     
+            <trans-unit id="8">
+                <source>text</source>
+                <target>text</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>textarea</source>
+                <target>textarea</target>
+            </trans-unit>      
+            <trans-unit id="10">
+                <source>checkbox</source>
+                <target>checkbox</target>
+            </trans-unit>  
+            <trans-unit id="11">
+                <source>radio</source>
+                <target>radio</target>
+            </trans-unit>  
+            <trans-unit id="12">
+                <source>header</source>
+                <target>kopfzeile</target>
+            </trans-unit>   
+            <trans-unit id="13">
+                <source>dropdown</source>
+                <target>dropdown</target>
+            </trans-unit>               
+            <trans-unit id="14">
+                <source>predefined</source>
+                <target>vordefinierten</target>
+            </trans-unit>  
+            <trans-unit id="15">
+                <source>class</source>
+                <target>modular</target>
+            </trans-unit>               
+            <trans-unit id="16">
+                <source>regular_expression</source>
+                <target>regulären ausdruck</target>
+            </trans-unit>     
+            <trans-unit id="17">
+                <source>length</source>
+                <target>zeichen grenze</target>
+            </trans-unit>   
+            <trans-unit id="18">
+                <source>This value is not a valid postcode value</source>
+                <target>Ungültige postleitzahl</target>
+            </trans-unit>     
+            <trans-unit id="19">
+                <source>This value is not a valid string</source>
+                <target>Gleiche buchstaben sind erforderlich</target>
+            </trans-unit>   
+            <trans-unit id="20">
+                <source>This value is not a valid number</source>
+                <target>Nummer hat ungültiges format</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Menu strony głównej</source>
+                <target>Menu start seite</target>
+            </trans-unit>   
+            <trans-unit id="22">
+                <source>Role / Grupy</source>
+                <target>Rolle / Gruppen</target>
+            </trans-unit>              
+            <trans-unit id="23">
+                <source>Lista elementów</source>
+                <target>Liste der positionen</target>
+            </trans-unit>    
+            <trans-unit id="24">
+                <source>Lista ról</source>
+                <target>Liste der rollen</target>
+            </trans-unit>   
+            <trans-unit id="25">
+                <source>Lista grup</source>
+                <target>Liste der gruppen</target>
+            </trans-unit>      
+            <trans-unit id="26">
+                <source>Użytkownicy</source>
+                <target>Benutzer</target>
+            </trans-unit> 
+            <trans-unit id="27">
+                <source>Lista użytkowników</source>
+                <target>Liste der benutzer</target>
+            </trans-unit> 
+            <trans-unit id="28">
+                <source>Formularze</source>
+                <target>Formulare</target>
+            </trans-unit> 
+            <trans-unit id="29">
+                <source>Zarządzaj pytaniami</source>
+                <target>Fragen verwalten</target>
+            </trans-unit>    
+            <trans-unit id="30">
+                <source>Lista formularzy</source>
+                <target>Liste der formulare</target>
+            </trans-unit>   
+            <trans-unit id="31">
+                <source>Rekrutacje</source>
+                <target>Rekrutierung</target>
+            </trans-unit>       
+            <trans-unit id="32">
+                <source>Zarządzaj rekrutacjami</source>
+                <target>Rekrutierung verwalten</target>
+            </trans-unit>   
+            <trans-unit id="33">
+                <source>Bad code value</source>
+                <target>Bad code value</target>
+            </trans-unit>                
+        </body>
+    </file>
+</xliff>

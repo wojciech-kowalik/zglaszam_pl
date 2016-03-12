@@ -1,0 +1,63 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+
+<div class="header-content">{% trans %}Rejestracje{% endtrans %}</div>
+
+<a class="button-new modal-handler" data-href="{{ path('RecruitmentBundle_new') }}" data-height="370" data-width="420" data-title="Rejestracje" href="#" >
+    {% trans %}Dodaj rejestrację{% endtrans %}
+</a>
+    
+<br /><br />
+
+<table id="list"></table> 
+<div id="pager"></div>
+
+<div class="header-content">{% trans %}Legenda{% endtrans %}</div>
+
+<span class="legend-elements">
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-pencil"></span> <span class="ui-button-text">Edytuj</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-close"></span> <span class="ui-button-text">Usuń</span>
+</a>
+
+<a class="ui-button ui-widget ui-button-text-icon-primary" role="button" aria-disabled="false">
+   <span class="ui-button-icon-primary ui-icon ui-icon-calendar"></span> <span class="ui-button-text">Terminy danej rejestracji</span>
+</a>
+
+</span>   
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    var url = "{{ url('RecruitmentBundle_list', {'_format' : 'json' }) }}";
+    var routingNames = {edit: {name: 'RecruitmentBundle_edit', height: 370, width: 420}, date: {name: 'RecruitmentBundle_dates', height: 470, width: 600} }
+    
+    {% if is_granted("ROLE_ADMIN_GODMODE") or is_granted("ROLE_USER_ADMINGROUP") %}
+        routingNames.del = {name: 'RecruitmentBundle_delete', height: 120, width: 180};
+    {% endif %}    
+    
+    var colNames = ['Id','Nazwa', 'Aktywny', 'Akcje'];
+    var colModels = [ 
+        {name:'id',index:'id', width: 25, search:true}, 
+        {name:'name',index:'name', search:true}, 
+        {name:'isActive',index:'isActive', sortable: true, search:false, formatter: booleanFormater},
+        {name:'actions',index:'actions', sortable:false, search:false},
+    ];
+
+    jqGridInit(url, routingNames, colNames, colModels, 'id');
+
+    jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false, search:false});
+    jQuery("#list").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : true, defaultSearch:"eq"});
+
+
+</script>   
+
+{% endblock %}

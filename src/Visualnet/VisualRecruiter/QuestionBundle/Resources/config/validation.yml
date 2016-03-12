@@ -1,0 +1,10 @@
+Visualnet\VisualRecruiter\QuestionBundle\Model\Question:
+  
+  properties:
+    name:
+      - NotBlank:
+          message: Pole wymagane
+    type:
+      - NotBlank: 
+          message: Pole wymagane
+      

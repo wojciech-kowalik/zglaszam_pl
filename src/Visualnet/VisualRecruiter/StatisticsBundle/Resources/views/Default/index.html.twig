@@ -1,0 +1,66 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+
+<div class="header-content">{% trans %}Statystyki{% endtrans %} ({% trans %}rejestracja{% endtrans %} {{ recruitmentSession["Name"] }})</div>
+
+        <div class="tabs">
+            <ul>
+                <li><a href="#tabs-1">Filtrowanie</a></li>
+            </ul>
+            <div id="tabs-1">
+                             
+            </div>
+        </div>
+
+
+<div id="chart-div"></div>
+
+{% endblock %}
+
+{% block javascripts %}
+    
+    <script type="text/javascript">
+        
+      google.load('visualization', '1', {'packages':['corechart']});
+  
+      $('#loader').show();
+      google.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+         
+        var data = google.visualization.arrayToDataTable([
+          ['Miesiące', 'Ilość zarejestrowanych'],
+          ['Styczeń',  1000],
+          ['Luty',  1170],
+          ['Marzec',  660],
+          ['Kwiecień',  1030],
+          ['Maj',  660],
+          ['Czerwiec',  660],
+          ['Lipiec',  660],
+          ['Sierpień',  660],
+          ['Wrzesień',  660],
+          ['Październik',  660],
+          ['Listopad',  660],
+          ['Grudzień',  660]
+        ]);
+
+
+        options = {
+            width: 800,
+            height: 400,
+            legend: {position: 'top', textStyle: {color: '#545454', fontSize: 11}},
+            colors: ['#1a7188'],
+            chartArea: {left: 40, top: 40}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
+        chart.draw(data, options);
+        
+        $('#loader').hide();
+      }
+      
+      </script>
+
+
+{% endblock %}

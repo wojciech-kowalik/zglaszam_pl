@@ -1,0 +1,23 @@
+parameters:
+  
+    langs: [pl, en, de]
+    
+    password_length: 6
+    
+    user_register_role: [ROLE_USER_ADMINGROUP]
+    user_admin_role: [ROLE_ADMIN]
+    
+    administrator_email: kontakt@wojciech-kowalik.pl
+    
+    paginator_elements_per_site: 15
+    
+    export:
+      csv_separator: ','
+      #available types xls5, xls2007 
+      excel_type: 'xls2007' 
+    
+    validator:
+      mobilephone_expression: 999-999-999
+      phone_expression: 99 999 99 99
+      nip_expression: 999-999-99-99
+      postcode_expression: 99-999

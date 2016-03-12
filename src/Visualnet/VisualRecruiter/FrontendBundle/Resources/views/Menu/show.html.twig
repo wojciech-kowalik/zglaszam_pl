@@ -1,0 +1,18 @@
+{% extends "::frontend.html.twig" %}
+
+{% block body %}
+
+<section>
+
+    <div class="content-header">{{ object.getName|capitalize }}</div>
+    <article>
+        <div class="description hyphenation hyphenate">
+
+            {{ object.getContent|raw }}
+
+        </div>
+    </article>        
+
+</section>
+
+{% endblock %}

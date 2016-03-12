@@ -1,0 +1,56 @@
+StatisticsBundle:
+    resource: "@StatisticsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+TranslateBundle:
+    resource: "@TranslateBundle/Resources/config/routing.xml"
+    prefix:   /
+
+RecruitmentBundle:
+    resource: "@RecruitmentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+FormBundle:
+    resource: "@FormBundle/Resources/config/routing.yml"
+    prefix:   /
+
+QuestionBundle:
+    resource: "@QuestionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+VisualnetLogBundle:
+    resource: "@VisualnetLogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+UtilsBundle:
+    resource: "@UtilsBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+FrontendBundle:
+    resource: "@FrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+AdminBundle:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+MenuBundle:
+    resource: "@MenuBundle/Resources/config/routing.yml"
+    prefix:   /    
+    
+VisualnetUserBundle:
+    resource: "@VisualnetUserBundle/Resources/config/routing.yml"
+    prefix:   /    
+    
+UserBundle:
+  resource: "@UserBundle/Controller"
+  type: annotation  
+  prefix:   /
+  
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"  
+    
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal

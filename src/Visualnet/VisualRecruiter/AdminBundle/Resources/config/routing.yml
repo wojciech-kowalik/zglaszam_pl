@@ -1,0 +1,46 @@
+homepage:
+    pattern:  /admin/
+    defaults: { _controller: AdminBundle:Default:index }
+AdminBundle_homepage_locale:
+    pattern:  /admin/{_locale}/
+    defaults: { _controller: AdminBundle:Default:index }     
+AdminBundle_logout:
+    pattern:  /admin/logout.html
+    defaults: { _controller: AdminBundle:Default:logout }
+    options:
+      expose: true     
+      
+AdminBundle_language:
+    pattern: /admin/change/language/{language}
+    defaults: { _controller: AdminBundle:Language:change }
+   
+AdminBundle_guide:
+    pattern: /admin/{_locale}/guide.html
+    defaults: { _controller: AdminBundle:Guide:index, _locale: 'pl' }    
+    
+AdminBundle_guide_element:
+    pattern: /admin/{_locale}/{id}/guide.html
+    defaults: { _controller: AdminBundle:Guide:element, _locale: 'pl', id: 1 }  
+    requirements:
+        id:  \d+
+        _method:  GET      
+    
+AdminBundle_guide_thanks:
+    pattern: /admin/{_locale}/thanks/guide.html
+    defaults: { _controller: AdminBundle:Guide:thanks, _locale: 'pl' }      
+    
+AdminBundle_recruitment:
+    pattern: /admin/{_locale}/change/recruitment/{id}
+    defaults: { _controller: AdminBundle:Recruitment:change, id: '0', _locale: 'pl' }    
+    options:
+      expose: true   
+      
+AdminBundle_suggest:
+    pattern: /admin/{_locale}/suggest.html
+    defaults: { _controller: AdminBundle:Suggest:index, _locale: 'pl' }    
+    
+AdminBundle_suggest_send:
+    pattern: /admin/{_locale}/send/suggest.html
+    defaults: { _controller: AdminBundle:Suggest:send, _locale: 'pl' }       
+    
+

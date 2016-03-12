@@ -1,0 +1,9 @@
+Visualnet\VisualRecruiter\UserBundle\Model\Role:
+  
+  properties:
+    name:
+      - NotBlank:
+          message: Pole wymagane
+    description:
+      - NotBlank: 
+          message: Pole wymagane
